@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     77192,       2051]
-NotebookOptionsPosition[     76539,       2023]
-NotebookOutlinePosition[     76886,       2038]
-CellTagsIndexPosition[     76843,       2035]
+NotebookDataLength[     76750,       2035]
+NotebookOptionsPosition[     76211,       2011]
+NotebookOutlinePosition[     76558,       2026]
+CellTagsIndexPosition[     76515,       2023]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -2007,18 +2007,6 @@ Cell[BoxData[
            SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]]}], ")"}]}]}]], "Output",
  CellChangeTimes->{{3.6362932564011917`*^9, 3.636293279217497*^9}, 
    3.6362941707854915`*^9, 3.6362942453387556`*^9, 3.6362948858613915`*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"a", " ", "=", " ", 
-  RowBox[{"Exp", "[", "2", "]"}]}]], "Input",
- CellChangeTimes->{{3.636294191985704*^9, 3.636294218238206*^9}}],
-
-Cell[BoxData[
- SuperscriptBox["\[ExponentialE]", "2"]], "Output",
- CellChangeTimes->{{3.636294194258834*^9, 3.6362942188902426`*^9}}]
 }, Open  ]]
 },
 WindowSize->{1280, 942},
@@ -2047,11 +2035,7 @@ Cell[2031, 69, 473, 15, 58, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
 Cell[2541, 89, 283, 7, 31, "Input"],
-Cell[2827, 98, 73368, 1910, 1843, "Output"]
-}, Open  ]],
-Cell[CellGroupData[{
-Cell[76232, 2013, 155, 3, 31, "Input"],
-Cell[76390, 2018, 133, 2, 31, "Output"]
+Cell[2827, 98, 73368, 1910, 1810, "Output"]
 }, Open  ]]
 }
 ]
