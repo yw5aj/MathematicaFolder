@@ -1,0 +1,342 @@
+(* Content-type: application/vnd.wolfram.mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 10.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       158,          7]
+NotebookDataLength[     13428,        333]
+NotebookOptionsPosition[     13105,        317]
+NotebookOutlinePosition[     13453,        332]
+CellTagsIndexPosition[     13410,        329]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell[BoxData[
+ RowBox[{
+  RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+   RowBox[{
+    RowBox[{
+     RowBox[{"Gm", " ", "=", " ", 
+      RowBox[{"SparseArray", "[", 
+       RowBox[{"DiagonalMatrix", "[", 
+        RowBox[{"Table", "[", 
+         RowBox[{"gm", ",", " ", 
+          RowBox[{"{", "20", "}"}]}], "]"}], "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Cm", " ", "=", " ", 
+      RowBox[{"SparseArray", "[", 
+       RowBox[{"DiagonalMatrix", "[", 
+        RowBox[{"Table", "[", 
+         RowBox[{"cm", ",", " ", 
+          RowBox[{"{", "20", "}"}]}], "]"}], "]"}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Bvn", "=", "\[IndentingNewLine]", 
+      RowBox[{"SparseArray", "[", "\[IndentingNewLine]", 
+       RowBox[{
+        RowBox[{"{", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"i_", ",", "i_"}], "}"}], "\[Rule]", 
+           RowBox[{"-", "2"}]}], ",", 
+          RowBox[{
+           RowBox[{
+            RowBox[{"{", 
+             RowBox[{"i_", ",", "j_"}], "}"}], "/;", 
+            RowBox[{"Abs", "[", 
+             RowBox[{"i", "-", "j"}], "]"}]}], "=", 
+           RowBox[{
+            RowBox[{"1", "&&", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"i", ",", "j"}], "}"}], "\[NotEqual]", 
+              RowBox[{"{", 
+               RowBox[{"1", ",", "2"}], "}"}]}], "&&", 
+             RowBox[{
+              RowBox[{"{", 
+               RowBox[{"i", ",", "j"}], "}"}], "\[NotEqual]", 
+              RowBox[{"{", 
+               RowBox[{"20", ",", "19"}], "}"}]}]}], "\[Rule]", "1"}]}], ",", 
+          "\[IndentingNewLine]", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"1", ",", "2"}], "}"}], "\[Rule]", "2"}], ",", 
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"20", ",", "19"}], "}"}], "\[Rule]", "2"}]}], "}"}], ",", 
+        RowBox[{"{", 
+         RowBox[{"20", ",", "20"}], "}"}]}], "]"}]}], ";", 
+     RowBox[{"Iinj", "=", 
+      RowBox[{"Insert", "[", 
+       RowBox[{
+        RowBox[{"Table", "[", 
+         RowBox[{"0", ",", 
+          RowBox[{"{", "19", "}"}]}], "]"}], ",", "iinj", ",", "pos"}], 
+       "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"psi", "=", 
+      RowBox[{"50", "/", 
+       RowBox[{"{", 
+        RowBox[{"4", "*", "Ri", "*", "2", "*", "2"}], "}"}]}]}], ";", 
+     RowBox[{"v", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{"0", ",", 
+        RowBox[{"{", "20", "}"}]}], "]"}]}], ";", "\[IndentingNewLine]", 
+     RowBox[{"soln", "=", 
+      RowBox[{"Table", "[", 
+       RowBox[{
+        RowBox[{"v", "=", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{
+             RowBox[{
+              RowBox[{"Inverse", "[", "Cm", "]"}], ".", 
+              RowBox[{"{", 
+               RowBox[{"psi", "*", 
+                RowBox[{"{", 
+                 RowBox[{"Bvn", ".", "v"}], "}"}]}], "}"}]}], "+", 
+             RowBox[{"Gm", ".", "v"}], "+", 
+             RowBox[{"If", "[", 
+              RowBox[{
+               RowBox[{"m", "\[LessEqual]", "dur"}], ",", "Iinj", ",", 
+               RowBox[{"0", "*", "Iinj"}]}], "]"}]}], "}"}], "*", 
+           RowBox[{"{", "0.1", "}"}]}], "+", "v"}]}], ",", 
+        RowBox[{"{", 
+         RowBox[{"m", ",", "1", ",", "10", ",", "1"}], "}"}]}], "]"}]}], ";", 
+     "\[IndentingNewLine]", 
+     RowBox[{"Plot", "[", 
+      RowBox[{
+       RowBox[{
+        RowBox[{"Interpolation", "[", 
+         RowBox[{"Partition", "[", 
+          RowBox[{
+           RowBox[{"Riffle", "[", 
+            RowBox[{
+             RowBox[{"Table", "[", 
+              RowBox[{"j", ",", 
+               RowBox[{"{", 
+                RowBox[{"j", ",", "0", ",", "40", ",", "2"}], "}"}]}], "]"}], 
+             ",", 
+             RowBox[{"soln", "[", 
+              RowBox[{"[", "n", "]"}], "]"}]}], "]"}], ",", "2"}], "]"}], 
+         "]"}], "[", "x", "]"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"x", ",", "0", ",", "40"}], "}"}], ",", 
+       RowBox[{"PlotRange", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"0", ",", "30"}], "}"}]}], ",", 
+       RowBox[{"AxesLabel", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{
+         "\"\<X(\[Mu]m)\>\"", ",", 
+          "\"\<\!\(\*SubscriptBox[\(V\), \(m\)]\)(mV)\>\""}], "}"}]}], ",", 
+       RowBox[{"PlotStyle", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"Black", ",", "Thick"}], "}"}]}], ",", 
+       RowBox[{"ImageSize", "\[Rule]", 
+        RowBox[{"{", 
+         RowBox[{"500", ",", "300"}], "}"}]}]}], "]"}]}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "gm", ",", "0.5", ",", 
+        "\"\<\!\(\*SubscriptBox[\(G\), \
+\(m\)]\)(mS/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))\>\""}], "}"}], ",", "0.01",
+       ",", "1.0"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "cm", ",", "0.5", ",", 
+        "\"\<\!\(\*SubscriptBox[\(C\), \
+\(m\)]\)(\[Mu]F/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))\>\""}], "}"}], ",", 
+      "0.01", ",", "1.0"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "Ri", ",", "150", ",", 
+        "\"\<\!\(\*SubscriptBox[\(R\), \(i\)]\)(\[CapitalOmega]cm)\>\""}], 
+       "}"}], ",", "100", ",", "200"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{
+       "iinj", ",", "10", ",", 
+        "\"\<\!\(\*SubscriptBox[\(I\), \(max\)]\)(nA)\>\""}], "}"}], ",", "0",
+       ",", "20"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"dur", ",", "5", ",", "\"\<current duration (ms)\>\""}], "}"}],
+       ",", "1", ",", "10", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"pos", ",", "10", ",", "\"\<injection position(\[Mu]m)\>\""}], 
+       "}"}], ",", "1", ",", "20", ",", "1"}], "}"}], ",", 
+    RowBox[{"{", 
+     RowBox[{
+      RowBox[{"{", 
+       RowBox[{"n", ",", "5", ",", "\"\<time (ms)\>\""}], "}"}], ",", "1", 
+      ",", "10", ",", "1"}], "}"}], ",", 
+    RowBox[{"TrackedSymbols", "\[Rule]", "True"}], ",", 
+    RowBox[{"AutorunSequencing", "\[Rule]", 
+     RowBox[{"{", 
+      RowBox[{"1", ",", "4", ",", "6", ",", "7"}], "}"}]}]}], "]"}], 
+  "\[IndentingNewLine]"}]], "Input",
+ CellChangeTimes->{{3.6359794675829787`*^9, 3.635979534614813*^9}, {
+  3.6359796778930073`*^9, 3.6359797348662663`*^9}, {3.6359809117575808`*^9, 
+  3.6359810064619975`*^9}, {3.635981321156997*^9, 3.6359815147810717`*^9}, {
+  3.6359824266982307`*^9, 3.635982458840069*^9}, {3.635983010970649*^9, 
+  3.635983011198662*^9}, {3.635983049226837*^9, 3.635983140165038*^9}, {
+  3.635983264092127*^9, 3.635983338421378*^9}, {3.6360257252967687`*^9, 
+  3.6360260145393124`*^9}, {3.6360260953699355`*^9, 3.636026221002121*^9}, {
+  3.636026257570213*^9, 3.636026470035365*^9}}],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`cm$$ = 0.5, $CellContext`dur$$ = 
+    5, $CellContext`gm$$ = 0.5, $CellContext`iinj$$ = 10, $CellContext`n$$ = 
+    5, $CellContext`pos$$ = 10, $CellContext`Ri$$ = 150, Typeset`show$$ = 
+    True, Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`gm$$], 0.5, 
+       "\!\(\*SubscriptBox[\(G\), \(m\)]\)(mS/\!\(\*SuperscriptBox[\(cm\), \
+\(2\)]\))"}, 0.01, 1.}, {{
+       Hold[$CellContext`cm$$], 0.5, 
+       "\!\(\*SubscriptBox[\(C\), \
+\(m\)]\)(\[Mu]F/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))"}, 0.01, 1.}, {{
+       Hold[$CellContext`Ri$$], 150, 
+       "\!\(\*SubscriptBox[\(R\), \(i\)]\)(\[CapitalOmega]cm)"}, 100, 200}, {{
+       Hold[$CellContext`iinj$$], 10, 
+       "\!\(\*SubscriptBox[\(I\), \(max\)]\)(nA)"}, 0, 20}, {{
+       Hold[$CellContext`dur$$], 5, "current duration (ms)"}, 1, 10, 1}, {{
+       Hold[$CellContext`pos$$], 10, "injection position(\[Mu]m)"}, 1, 20, 
+      1}, {{
+       Hold[$CellContext`n$$], 5, "time (ms)"}, 1, 10, 1}}, Typeset`size$$ = {
+    64., {1., 9.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`gm$5339$$ = 
+    0, $CellContext`cm$5340$$ = 0, $CellContext`Ri$5341$$ = 
+    0, $CellContext`iinj$5342$$ = 0, $CellContext`dur$5343$$ = 
+    0, $CellContext`pos$5344$$ = 0, $CellContext`n$5345$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`cm$$ = 0.5, $CellContext`dur$$ = 
+        5, $CellContext`gm$$ = 0.5, $CellContext`iinj$$ = 
+        10, $CellContext`n$$ = 5, $CellContext`pos$$ = 10, $CellContext`Ri$$ = 
+        150}, "ControllerVariables" :> {
+        Hold[$CellContext`gm$$, $CellContext`gm$5339$$, 0], 
+        Hold[$CellContext`cm$$, $CellContext`cm$5340$$, 0], 
+        Hold[$CellContext`Ri$$, $CellContext`Ri$5341$$, 0], 
+        Hold[$CellContext`iinj$$, $CellContext`iinj$5342$$, 0], 
+        Hold[$CellContext`dur$$, $CellContext`dur$5343$$, 0], 
+        Hold[$CellContext`pos$$, $CellContext`pos$5344$$, 0], 
+        Hold[$CellContext`n$$, $CellContext`n$5345$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ($CellContext`Gm = SparseArray[
+          DiagonalMatrix[
+           Table[$CellContext`gm$$, {20}]]]; $CellContext`Cm = SparseArray[
+          DiagonalMatrix[
+           Table[$CellContext`cm$$, {20}]]]; $CellContext`Bvn = SparseArray[{{
+             Pattern[$CellContext`i, 
+              Blank[]], 
+             Pattern[$CellContext`i, 
+              Blank[]]} -> -2, Condition[{
+              Pattern[$CellContext`i, 
+               Blank[]], 
+              Pattern[$CellContext`j, 
+               Blank[]]}, 
+             Abs[$CellContext`i - $CellContext`j]] = 
+           And[1, {$CellContext`i, $CellContext`j} != {1, 
+               2}, {$CellContext`i, $CellContext`j} != {20, 19}] -> 1, {1, 2} -> 
+           2, {20, 19} -> 2}, {20, 20}]; $CellContext`Iinj = Insert[
+          Table[
+          0, {19}], $CellContext`iinj$$, $CellContext`pos$$]; \
+$CellContext`psi = 50/{4 $CellContext`Ri$$ 2 2}; $CellContext`v = 
+        Table[0, {20}]; $CellContext`soln = Table[$CellContext`v = {Dot[
+                Inverse[$CellContext`Cm], {$CellContext`psi {
+                   Dot[$CellContext`Bvn, $CellContext`v]}}] + 
+              Dot[$CellContext`Gm, $CellContext`v] + 
+              If[$CellContext`m <= $CellContext`dur$$, $CellContext`Iinj, 
+                0 $CellContext`Iinj]} {0.1} + $CellContext`v, {$CellContext`m,
+            1, 10, 1}]; Plot[
+         Interpolation[
+          Partition[
+           Riffle[
+            Table[$CellContext`j, {$CellContext`j, 0, 40, 2}], 
+            Part[$CellContext`soln, $CellContext`n$$]], 
+           2]][$CellContext`x], {$CellContext`x, 0, 40}, PlotRange -> {0, 30},
+          AxesLabel -> {
+          "X(\[Mu]m)", "\!\(\*SubscriptBox[\(V\), \(m\)]\)(mV)"}, 
+         PlotStyle -> {Black, Thick}, ImageSize -> {500, 300}]), 
+      "Specifications" :> {{{$CellContext`gm$$, 0.5, 
+          "\!\(\*SubscriptBox[\(G\), \(m\)]\)(mS/\!\(\*SuperscriptBox[\(cm\), \
+\(2\)]\))"}, 0.01, 
+         1.}, {{$CellContext`cm$$, 0.5, 
+          "\!\(\*SubscriptBox[\(C\), \
+\(m\)]\)(\[Mu]F/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))"}, 0.01, 
+         1.}, {{$CellContext`Ri$$, 150, 
+          "\!\(\*SubscriptBox[\(R\), \(i\)]\)(\[CapitalOmega]cm)"}, 100, 
+         200}, {{$CellContext`iinj$$, 10, 
+          "\!\(\*SubscriptBox[\(I\), \(max\)]\)(nA)"}, 0, 
+         20}, {{$CellContext`dur$$, 5, "current duration (ms)"}, 1, 10, 
+         1}, {{$CellContext`pos$$, 10, "injection position(\[Mu]m)"}, 1, 20, 
+         1}, {{$CellContext`n$$, 5, "time (ms)"}, 1, 10, 1}}, 
+      "Options" :> {
+       TrackedSymbols -> True, AutorunSequencing -> {1, 4, 6, 7}}, 
+      "DefaultOptions" :> {}],
+     ImageSizeCache->{365., {132., 139.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.636026803553441*^9, 3.6360268476189613`*^9}]
+}, Open  ]]
+},
+WindowSize->{767, 862},
+WindowMargins->{{Automatic, -55}, {-31, Automatic}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
+StyleDefinitions->"Default.nb"
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{}
+*)
+(*CellTagsIndex
+CellTagsIndex->{}
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[580, 22, 6841, 182, 440, "Input"],
+Cell[7424, 206, 5665, 108, 288, "Output"]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)

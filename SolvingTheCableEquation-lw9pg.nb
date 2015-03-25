@@ -1,0 +1,1332 @@
+(* Content-type: application/mathematica *)
+
+(*** Wolfram Notebook File ***)
+(* http://www.wolfram.com/nb *)
+
+(* CreatedBy='Mathematica 7.0' *)
+
+(*CacheID: 234*)
+(* Internal cache information:
+NotebookFileLineBreakTest
+NotebookFileLineBreakTest
+NotebookDataPosition[       145,          7]
+NotebookDataLength[     54644,       1323]
+NotebookOptionsPosition[     50305,       1189]
+NotebookOutlinePosition[     51903,       1239]
+CellTagsIndexPosition[     51575,       1227]
+WindowFrame->Normal*)
+
+(* Beginning of Notebook Content *)
+Notebook[{
+
+Cell[CellGroupData[{
+Cell["Solving the Cable Equation", "DemoTitle",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4621816608470383`*^9, 3.4621816657552557`*^9}}],
+
+Cell["", "InitializationSection"],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateSection"],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Manipulate", "[", "\[IndentingNewLine]", 
+  RowBox[{
+   RowBox[{
+    RowBox[{"Gm", "=", 
+     RowBox[{"SparseArray", "[", 
+      RowBox[{"DiagonalMatrix", "[", 
+       RowBox[{"Table", "[", 
+        RowBox[{"gm", ",", 
+         RowBox[{"{", "20", "}"}]}], "]"}], "]"}], "]"}]}], ";", 
+    RowBox[{"Cm", "=", 
+     RowBox[{"SparseArray", "[", 
+      RowBox[{"DiagonalMatrix", "[", 
+       RowBox[{"Table", "[", 
+        RowBox[{"cm", ",", 
+         RowBox[{"{", "20", "}"}]}], "]"}], "]"}], "]"}]}], ";", 
+    RowBox[{"Bvn", "=", 
+     RowBox[{"SparseArray", "[", 
+      RowBox[{
+       RowBox[{"{", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"i_", ",", "i_"}], "}"}], "\[Rule]", 
+          RowBox[{"-", "2"}]}], ",", 
+         RowBox[{
+          RowBox[{
+           RowBox[{"{", 
+            RowBox[{"i_", ",", "j_"}], "}"}], "/;", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Abs", "[", 
+              RowBox[{"i", "-", "j"}], "]"}], "\[Equal]", "1"}], "&&", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"i", ",", "j"}], "}"}], "\[NotEqual]", 
+             RowBox[{"{", 
+              RowBox[{"1", ",", "2"}], "}"}]}], "&&", 
+            RowBox[{
+             RowBox[{"{", 
+              RowBox[{"i", ",", "j"}], "}"}], "\[NotEqual]", 
+             RowBox[{"{", 
+              RowBox[{"20", ",", "19"}], "}"}]}]}]}], "\[Rule]", "1"}], ",", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"1", ",", "2"}], "}"}], "\[Rule]", "2"}], ",", 
+         RowBox[{
+          RowBox[{"{", 
+           RowBox[{"20", ",", "19"}], "}"}], "\[Rule]", "2"}]}], "}"}], ",", 
+       RowBox[{"{", 
+        RowBox[{"20", ",", "20"}], "}"}]}], "]"}]}], ";", 
+    RowBox[{"Iinj", "=", 
+     RowBox[{"Insert", "[", 
+      RowBox[{
+       RowBox[{"Table", "[", 
+        RowBox[{"0", ",", 
+         RowBox[{"{", "19", "}"}]}], "]"}], ",", "iinj", ",", "pos"}], 
+      "]"}]}], ";", 
+    RowBox[{"psi", "=", 
+     RowBox[{"1", "/", 
+      RowBox[{"(", 
+       RowBox[{"4", "*", "Ri", "*", "2", "*", "2"}], ")"}]}]}], ";", 
+    RowBox[{"v", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{"0", ",", 
+       RowBox[{"{", "20", "}"}]}], "]"}]}], ";", 
+    RowBox[{"soln", "=", 
+     RowBox[{"Table", "[", 
+      RowBox[{
+       RowBox[{"v", "=", 
+        RowBox[{
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            RowBox[{
+             RowBox[{"Inverse", "[", "Cm", "]"}], ".", 
+             RowBox[{"(", 
+              RowBox[{"psi", "*", 
+               RowBox[{"(", 
+                RowBox[{"Bvn", ".", "v"}], ")"}]}], ")"}]}], "+", 
+            RowBox[{"Gm", ".", "v"}], "+", 
+            RowBox[{"If", "[", 
+             RowBox[{
+              RowBox[{"m", "\[LessEqual]", "dur"}], ",", "Iinj", ",", 
+              RowBox[{"0", "*", "Iinj"}]}], "]"}]}], ")"}], "*", 
+          RowBox[{"(", "0.1", ")"}]}], "+", "v"}]}], ",", 
+       RowBox[{"{", 
+        RowBox[{"m", ",", "1", ",", "10", ",", "1"}], "}"}]}], "]"}]}], ";", 
+    RowBox[{"Plot", "[", 
+     RowBox[{
+      RowBox[{
+       RowBox[{"Interpolation", "[", 
+        RowBox[{"Partition", "[", 
+         RowBox[{
+          RowBox[{"Riffle", "[", 
+           RowBox[{
+            RowBox[{"Table", "[", 
+             RowBox[{"j", ",", 
+              RowBox[{"{", 
+               RowBox[{"j", ",", "0", ",", "40", ",", "2"}], "}"}]}], "]"}], 
+            ",", 
+            RowBox[{"soln", "[", 
+             RowBox[{"[", "n", "]"}], "]"}]}], "]"}], ",", "2"}], "]"}], 
+        "]"}], "[", "x", "]"}], ",", 
+      RowBox[{"{", 
+       RowBox[{"x", ",", "0", ",", "40"}], "}"}], ",", 
+      RowBox[{"PlotRange", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"0", ",", "30"}], "}"}]}], ",", 
+      RowBox[{"AxesLabel", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{
+        "\"\<x(\[Mu]m)\>\"", ",", 
+         "\"\<\!\(\*SubscriptBox[\(V\), \(m\)]\)(mV)\>\""}], "}"}]}], ",", 
+      RowBox[{"PlotStyle", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"Black", ",", "Thick"}], "}"}]}], ",", 
+      RowBox[{"ImageSize", "\[Rule]", 
+       RowBox[{"{", 
+        RowBox[{"500", ",", "300"}], "}"}]}]}], "]"}]}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "gm", ",", "0.5", ",", 
+       "\"\<\!\(\*SubscriptBox[\(G\), \
+\(m\)]\)(mS/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))\>\""}], "}"}], ",", "0.01",
+      ",", "1.0"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "cm", ",", "0.5", ",", 
+       "\"\<\!\(\*SubscriptBox[\(C\), \
+\(m\)]\)(\[Mu]F/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))\>\""}], "}"}], ",", 
+     "0.01", ",", "1.0"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "Ri", ",", "150", ",", 
+       "\"\<\!\(\*SubscriptBox[\(R\), \(i\)]\)(\[CapitalOmega]cm)\>\""}], 
+      "}"}], ",", "100", ",", "200"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{
+      "iinj", ",", "10", ",", 
+       "\"\<\!\(\*SubscriptBox[\(I\), \(max\)]\)(nA)\>\""}], "}"}], ",", "0", 
+     ",", "20"}], "}"}], ",", "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"dur", ",", "5", ",", "\"\<current duration (ms)\>\""}], "}"}], 
+     ",", "1", ",", "10", ",", "1"}], "}"}], ",", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"pos", ",", "10", ",", "\"\<injection position(\[Mu]m)\>\""}], 
+      "}"}], ",", "1", ",", "20", ",", "1"}], "}"}], ",", 
+   "\[IndentingNewLine]", 
+   RowBox[{"{", 
+    RowBox[{
+     RowBox[{"{", 
+      RowBox[{"n", ",", "5", ",", "\"\<time (ms)\>\""}], "}"}], ",", "1", ",",
+      "10", ",", "1"}], "}"}], ",", 
+   RowBox[{"TrackedSymbols", "\[Rule]", "True"}], ",", 
+   RowBox[{"AutorunSequencing", "\[Rule]", 
+    RowBox[{"{", 
+     RowBox[{"1", ",", "4", ",", "6", ",", "7"}], "}"}]}]}], "]"}]], "Input",
+ CellChangeTimes->{{3.4621351042961082`*^9, 3.462135141752499*^9}, {
+   3.462135182946851*^9, 3.462135186144514*^9}, {3.462135464233585*^9, 
+   3.462135465433387*^9}, {3.462135753987268*^9, 3.462135770200901*^9}, {
+   3.4621358434919643`*^9, 3.462135844185223*^9}, {3.462136135334244*^9, 
+   3.4621362548735*^9}, {3.462136286110489*^9, 3.4621364330462008`*^9}, {
+   3.462136540829905*^9, 3.462136631995119*^9}, {3.462136709077932*^9, 
+   3.462136709595315*^9}, 3.4621368086516533`*^9, {3.462143145254259*^9, 
+   3.462143213931303*^9}, {3.462177243147009*^9, 3.462177345913739*^9}, {
+   3.462177428798998*^9, 3.462177429211604*^9}, {3.462177599025613*^9, 
+   3.462177601642228*^9}, {3.462177646930443*^9, 3.462177674988852*^9}, {
+   3.4621777372871923`*^9, 3.4621777826738586`*^9}, {3.462177864192059*^9, 
+   3.4621780287963953`*^9}, {3.4621780879701653`*^9, 3.462178177273561*^9}, {
+   3.4621782150421667`*^9, 3.4621782609509*^9}, {3.462178486141563*^9, 
+   3.462178491294482*^9}, {3.462180195963908*^9, 3.462180199801292*^9}, {
+   3.462180242286806*^9, 3.462180242751328*^9}, {3.462180276407226*^9, 
+   3.4621804451925297`*^9}, {3.462180527073893*^9, 3.462180583529455*^9}, {
+   3.462180636247861*^9, 3.462180663003787*^9}, {3.4621807712280283`*^9, 
+   3.462180785581254*^9}, {3.4621809933284597`*^9, 3.462181024314633*^9}, {
+   3.462181123106297*^9, 3.462181217636503*^9}, {3.462181251366246*^9, 
+   3.4621812538760643`*^9}, {3.462181490063995*^9, 3.462181499156815*^9}, {
+   3.4622932625792265`*^9, 3.462293397637444*^9}, 3.6361518135595865`*^9},
+ CellID->355081776],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`cm$$ = 1., $CellContext`dur$$ = 
+    9, $CellContext`gm$$ = 0.769, $CellContext`iinj$$ = 
+    19.35, $CellContext`n$$ = 5, $CellContext`pos$$ = 18, $CellContext`Ri$$ = 
+    197.2, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`gm$$], 0.5, 
+       "\!\(\*SubscriptBox[\(G\), \(m\)]\)(mS/\!\(\*SuperscriptBox[\(cm\), \
+\(2\)]\))"}, 0.01, 1.}, {{
+       Hold[$CellContext`cm$$], 0.5, 
+       "\!\(\*SubscriptBox[\(C\), \
+\(m\)]\)(\[Mu]F/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))"}, 0.01, 1.}, {{
+       Hold[$CellContext`Ri$$], 150, 
+       "\!\(\*SubscriptBox[\(R\), \(i\)]\)(\[CapitalOmega]cm)"}, 100, 200}, {{
+       Hold[$CellContext`iinj$$], 10, 
+       "\!\(\*SubscriptBox[\(I\), \(max\)]\)(nA)"}, 0, 20}, {{
+       Hold[$CellContext`dur$$], 5, "current duration (ms)"}, 1, 10, 1}, {{
+       Hold[$CellContext`pos$$], 10, "injection position(\[Mu]m)"}, 1, 20, 
+      1}, {{
+       Hold[$CellContext`n$$], 5, "time (ms)"}, 1, 10, 1}}, Typeset`size$$ = {
+    500., {148., 152.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`gm$3080$$ = 
+    0, $CellContext`cm$3081$$ = 0, $CellContext`Ri$3082$$ = 
+    0, $CellContext`iinj$3083$$ = 0, $CellContext`dur$3084$$ = 
+    0, $CellContext`pos$3085$$ = 0, $CellContext`n$3086$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`cm$$ = 0.5, $CellContext`dur$$ = 
+        5, $CellContext`gm$$ = 0.5, $CellContext`iinj$$ = 
+        10, $CellContext`n$$ = 5, $CellContext`pos$$ = 10, $CellContext`Ri$$ = 
+        150}, "ControllerVariables" :> {
+        Hold[$CellContext`gm$$, $CellContext`gm$3080$$, 0], 
+        Hold[$CellContext`cm$$, $CellContext`cm$3081$$, 0], 
+        Hold[$CellContext`Ri$$, $CellContext`Ri$3082$$, 0], 
+        Hold[$CellContext`iinj$$, $CellContext`iinj$3083$$, 0], 
+        Hold[$CellContext`dur$$, $CellContext`dur$3084$$, 0], 
+        Hold[$CellContext`pos$$, $CellContext`pos$3085$$, 0], 
+        Hold[$CellContext`n$$, $CellContext`n$3086$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ($CellContext`Gm = SparseArray[
+          DiagonalMatrix[
+           Table[$CellContext`gm$$, {20}]]]; $CellContext`Cm = SparseArray[
+          DiagonalMatrix[
+           Table[$CellContext`cm$$, {20}]]]; $CellContext`Bvn = SparseArray[{{
+             Pattern[$CellContext`i, 
+              Blank[]], 
+             Pattern[$CellContext`i, 
+              Blank[]]} -> -2, Condition[{
+              Pattern[$CellContext`i, 
+               Blank[]], 
+              Pattern[$CellContext`j, 
+               Blank[]]}, 
+             And[
+             Abs[$CellContext`i - $CellContext`j] == 
+              1, {$CellContext`i, $CellContext`j} != {1, 
+               2}, {$CellContext`i, $CellContext`j} != {20, 19}]] -> 
+           1, {1, 2} -> 2, {20, 19} -> 2}, {20, 20}]; $CellContext`Iinj = 
+        Insert[
+          Table[
+          0, {19}], $CellContext`iinj$$, $CellContext`pos$$]; \
+$CellContext`psi = 1/(4 $CellContext`Ri$$ 2 2); $CellContext`v = 
+        Table[0, {20}]; $CellContext`soln = Table[$CellContext`v = (Dot[
+               Inverse[$CellContext`Cm], $CellContext`psi 
+               Dot[$CellContext`Bvn, $CellContext`v]] + 
+             Dot[$CellContext`Gm, $CellContext`v] + 
+             If[$CellContext`m <= $CellContext`dur$$, $CellContext`Iinj, 
+               0 $CellContext`Iinj]) 0.1 + $CellContext`v, {$CellContext`m, 1,
+            10, 1}]; Plot[
+         Interpolation[
+          Partition[
+           Riffle[
+            Table[$CellContext`j, {$CellContext`j, 0, 40, 2}], 
+            Part[$CellContext`soln, $CellContext`n$$]], 
+           2]][$CellContext`x], {$CellContext`x, 0, 40}, PlotRange -> {0, 30},
+          AxesLabel -> {
+          "x(\[Mu]m)", "\!\(\*SubscriptBox[\(V\), \(m\)]\)(mV)"}, 
+         PlotStyle -> {Black, Thick}, ImageSize -> {500, 300}]), 
+      "Specifications" :> {{{$CellContext`gm$$, 0.5, 
+          "\!\(\*SubscriptBox[\(G\), \(m\)]\)(mS/\!\(\*SuperscriptBox[\(cm\), \
+\(2\)]\))"}, 0.01, 
+         1.}, {{$CellContext`cm$$, 0.5, 
+          "\!\(\*SubscriptBox[\(C\), \
+\(m\)]\)(\[Mu]F/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))"}, 0.01, 
+         1.}, {{$CellContext`Ri$$, 150, 
+          "\!\(\*SubscriptBox[\(R\), \(i\)]\)(\[CapitalOmega]cm)"}, 100, 
+         200}, {{$CellContext`iinj$$, 10, 
+          "\!\(\*SubscriptBox[\(I\), \(max\)]\)(nA)"}, 0, 
+         20}, {{$CellContext`dur$$, 5, "current duration (ms)"}, 1, 10, 
+         1}, {{$CellContext`pos$$, 10, "injection position(\[Mu]m)"}, 1, 20, 
+         1}, {{$CellContext`n$$, 5, "time (ms)"}, 1, 10, 1}}, 
+      "Options" :> {
+       TrackedSymbols -> True, AutorunSequencing -> {1, 4, 6, 7}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{549., {274., 281.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UndoTrackedVariables:>{Typeset`show$$, Typeset`bookmarkMode$$},
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellChangeTimes->{3.35696210375764*^9, 3.46236238665358*^9, 
+  3.462362419200039*^9, 3.6361517555382824`*^9, 3.6361518151507893`*^9},
+ CellID->296831817]
+}, Open  ]]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ManipulateCaptionSection"],
+
+Cell[TextData[{
+ "A fundamental equation in mathematical biophysics is the cable equation, \
+whose solution gives the time-dependent distribution of voltage along the \
+length of a biological membrane, such as a neuronal axon. The voltage \
+distribution depends upon a number of variables, such as membrane conductance \
+",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SubscriptBox["G", "m"], ")"}], TraditionalForm]], "InlineMath"],
+ ", membrane capacitance ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SubscriptBox["C", "m"], ")"}], TraditionalForm]], "InlineMath"],
+ ", intracellular resistivity ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SubscriptBox["R", "i"], ")"}], TraditionalForm]], "InlineMath"],
+ ", the maximal value of the input current ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"(", 
+    SubscriptBox["I", "max"], ")"}], TraditionalForm]], "InlineMath"],
+ ", the duration of this current, and the position on the cable in which the \
+current is injected. In this Demonstration, these parameters can be varied \
+and their effect on the spatiotemporal evolution of the voltage distribution \
+viewed."
+}], "ManipulateCaption",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.462181709366818*^9, 3.462181766035636*^9}, {
+   3.4621819790360537`*^9, 3.462182010475506*^9}, {3.462182281935842*^9, 
+   3.46218252468836*^9}, {3.462184260620714*^9, 3.462184268484373*^9}, {
+   3.462184299961891*^9, 3.462184300447089*^9}, {3.462293425483228*^9, 
+   3.4622934333570156`*^9}, {3.462362505964553*^9, 3.4623625061833*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ThumbnailSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`cm$$ = 0.527, $CellContext`dur$$ = 
+    9, $CellContext`gm$$ = 0.974, $CellContext`iinj$$ = 
+    9.700000000000001, $CellContext`n$$ = 8, $CellContext`pos$$ = 
+    4, $CellContext`Ri$$ = 136.4, Typeset`show$$ = True, 
+    Typeset`bookmarkList$$ = {}, Typeset`bookmarkMode$$ = "Menu", 
+    Typeset`animator$$, Typeset`animvar$$ = 1, Typeset`name$$ = 
+    "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`gm$$], 0.974, 
+       "\!\(\*SubscriptBox[\(G\), \(m\)]\)(mS/\!\(\*SuperscriptBox[\(cm\), \
+\(2\)]\))"}, 0.01, 1.}, {{
+       Hold[$CellContext`cm$$], 0.527, 
+       "\!\(\*SubscriptBox[\(C\), \
+\(m\)]\)(\[Mu]F/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))"}, 0.01, 1.}, {{
+       Hold[$CellContext`Ri$$], 136.4, 
+       "\!\(\*SubscriptBox[\(R\), \(i\)]\)(\[CapitalOmega]cm)"}, 100, 200}, {{
+       Hold[$CellContext`iinj$$], 18.45, 
+       "\!\(\*SubscriptBox[\(I\), \(max\)]\)(nA)"}, 0, 20}, {{
+       Hold[$CellContext`dur$$], 9, "current duration (ms)"}, 1, 10, 1}, {{
+       Hold[$CellContext`pos$$], 4, "injection position(\[Mu]m)"}, 1, 20, 
+      1}, {{
+       Hold[$CellContext`n$$], 8, "time (ms)"}, 1, 10, 1}}, Typeset`size$$ = {
+    500., {148., 152.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`gm$8343$$ = 
+    0, $CellContext`cm$8344$$ = 0, $CellContext`Ri$8345$$ = 
+    0, $CellContext`iinj$8346$$ = 0, $CellContext`dur$8347$$ = 
+    0, $CellContext`pos$8348$$ = 0, $CellContext`n$8349$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`cm$$ = 0.527, $CellContext`dur$$ = 
+        9, $CellContext`gm$$ = 0.974, $CellContext`iinj$$ = 
+        18.45, $CellContext`n$$ = 8, $CellContext`pos$$ = 
+        4, $CellContext`Ri$$ = 136.4}, "ControllerVariables" :> {
+        Hold[$CellContext`gm$$, $CellContext`gm$8343$$, 0], 
+        Hold[$CellContext`cm$$, $CellContext`cm$8344$$, 0], 
+        Hold[$CellContext`Ri$$, $CellContext`Ri$8345$$, 0], 
+        Hold[$CellContext`iinj$$, $CellContext`iinj$8346$$, 0], 
+        Hold[$CellContext`dur$$, $CellContext`dur$8347$$, 0], 
+        Hold[$CellContext`pos$$, $CellContext`pos$8348$$, 0], 
+        Hold[$CellContext`n$$, $CellContext`n$8349$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ($CellContext`Gm = SparseArray[
+          DiagonalMatrix[
+           Table[$CellContext`gm$$, {20}]]]; $CellContext`Cm = SparseArray[
+          DiagonalMatrix[
+           Table[$CellContext`cm$$, {20}]]]; $CellContext`Bvn = SparseArray[{{
+             Pattern[$CellContext`i, 
+              Blank[]], 
+             Pattern[$CellContext`i, 
+              Blank[]]} -> -2, Condition[{
+              Pattern[$CellContext`i, 
+               Blank[]], 
+              Pattern[$CellContext`j, 
+               Blank[]]}, 
+             And[
+             Abs[$CellContext`i - $CellContext`j] == 
+              1, {$CellContext`i, $CellContext`j} != {1, 
+               2}, {$CellContext`i, $CellContext`j} != {20, 19}]] -> 
+           1, {1, 2} -> 2, {20, 19} -> 2}, {20, 20}]; $CellContext`Iinj = 
+        Insert[
+          Table[
+          0, {19}], $CellContext`iinj$$, $CellContext`pos$$]; \
+$CellContext`psi = 50/(((4 $CellContext`Ri$$) 2) 2); $CellContext`v = 
+        Table[0, {20}]; $CellContext`soln = Table[$CellContext`v = (Dot[
+               Inverse[$CellContext`Cm], $CellContext`psi 
+               Dot[$CellContext`Bvn, $CellContext`v]] + 
+             Dot[$CellContext`Gm, $CellContext`v] + 
+             If[$CellContext`m <= $CellContext`dur$$, $CellContext`Iinj, 
+               0 $CellContext`Iinj]) 0.1 + $CellContext`v, {$CellContext`m, 1,
+            10, 1}]; Plot[
+         Interpolation[
+          Partition[
+           Riffle[
+            Table[$CellContext`j, {$CellContext`j, 0, 40, 2}], 
+            Part[$CellContext`soln, $CellContext`n$$]], 
+           2]][$CellContext`x], {$CellContext`x, 0, 40}, PlotRange -> {0, 30},
+          AxesLabel -> {
+          "x(\[Mu]m)", "\!\(\*SubscriptBox[\(V\), \(m\)]\)(mV)"}, 
+         PlotStyle -> {Black, Thick}, ImageSize -> {500, 300}]), 
+      "Specifications" :> {{{$CellContext`gm$$, 0.974, 
+          "\!\(\*SubscriptBox[\(G\), \(m\)]\)(mS/\!\(\*SuperscriptBox[\(cm\), \
+\(2\)]\))"}, 0.01, 
+         1.}, {{$CellContext`cm$$, 0.527, 
+          "\!\(\*SubscriptBox[\(C\), \
+\(m\)]\)(\[Mu]F/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))"}, 0.01, 
+         1.}, {{$CellContext`Ri$$, 136.4, 
+          "\!\(\*SubscriptBox[\(R\), \(i\)]\)(\[CapitalOmega]cm)"}, 100, 
+         200}, {{$CellContext`iinj$$, 18.45, 
+          "\!\(\*SubscriptBox[\(I\), \(max\)]\)(nA)"}, 0, 
+         20}, {{$CellContext`dur$$, 9, "current duration (ms)"}, 1, 10, 
+         1}, {{$CellContext`pos$$, 4, "injection position(\[Mu]m)"}, 1, 20, 
+         1}, {{$CellContext`n$$, 8, "time (ms)"}, 1, 10, 1}}, 
+      "Options" :> {
+       TrackedSymbols -> True, AutorunSequencing -> {1, 4, 6, 7}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{549., {274., 281.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->172565745]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SnapshotsSection"],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`cm$$ = 0.01, $CellContext`dur$$ = 
+    10, $CellContext`gm$$ = 0.807, $CellContext`iinj$$ = 
+    16.3, $CellContext`n$$ = 8, $CellContext`pos$$ = 1, $CellContext`Ri$$ = 
+    149.4, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`gm$$], 0.807, 
+       "\!\(\*SubscriptBox[\(G\), \(m\)]\)(mS/\!\(\*SuperscriptBox[\(cm\), \
+\(2\)]\))"}, 0.01, 1.}, {{
+       Hold[$CellContext`cm$$], 0.01, 
+       "\!\(\*SubscriptBox[\(C\), \
+\(m\)]\)(\[Mu]F/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))"}, 0.01, 1.}, {{
+       Hold[$CellContext`Ri$$], 149.4, 
+       "\!\(\*SubscriptBox[\(R\), \(i\)]\)(\[CapitalOmega]cm)"}, 100, 200}, {{
+       Hold[$CellContext`iinj$$], 16.3, 
+       "\!\(\*SubscriptBox[\(I\), \(max\)]\)(nA)"}, 0, 20}, {{
+       Hold[$CellContext`dur$$], 10, "current duration (ms)"}, 1, 10, 1}, {{
+       Hold[$CellContext`pos$$], 1, "injection position(\[Mu]m)"}, 1, 20, 
+      1}, {{
+       Hold[$CellContext`n$$], 8, "time (ms)"}, 1, 10, 1}}, Typeset`size$$ = {
+    500., {148., 152.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`gm$8433$$ = 
+    0, $CellContext`cm$8434$$ = 0, $CellContext`Ri$8435$$ = 
+    0, $CellContext`iinj$8436$$ = 0, $CellContext`dur$8437$$ = 
+    0, $CellContext`pos$8438$$ = 0, $CellContext`n$8439$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`cm$$ = 0.01, $CellContext`dur$$ = 
+        10, $CellContext`gm$$ = 0.807, $CellContext`iinj$$ = 
+        16.3, $CellContext`n$$ = 8, $CellContext`pos$$ = 1, $CellContext`Ri$$ = 
+        149.4}, "ControllerVariables" :> {
+        Hold[$CellContext`gm$$, $CellContext`gm$8433$$, 0], 
+        Hold[$CellContext`cm$$, $CellContext`cm$8434$$, 0], 
+        Hold[$CellContext`Ri$$, $CellContext`Ri$8435$$, 0], 
+        Hold[$CellContext`iinj$$, $CellContext`iinj$8436$$, 0], 
+        Hold[$CellContext`dur$$, $CellContext`dur$8437$$, 0], 
+        Hold[$CellContext`pos$$, $CellContext`pos$8438$$, 0], 
+        Hold[$CellContext`n$$, $CellContext`n$8439$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ($CellContext`Gm = SparseArray[
+          DiagonalMatrix[
+           Table[$CellContext`gm$$, {20}]]]; $CellContext`Cm = SparseArray[
+          DiagonalMatrix[
+           Table[$CellContext`cm$$, {20}]]]; $CellContext`Bvn = SparseArray[{{
+             Pattern[$CellContext`i, 
+              Blank[]], 
+             Pattern[$CellContext`i, 
+              Blank[]]} -> -2, Condition[{
+              Pattern[$CellContext`i, 
+               Blank[]], 
+              Pattern[$CellContext`j, 
+               Blank[]]}, 
+             And[
+             Abs[$CellContext`i - $CellContext`j] == 
+              1, {$CellContext`i, $CellContext`j} != {1, 
+               2}, {$CellContext`i, $CellContext`j} != {20, 19}]] -> 
+           1, {1, 2} -> 2, {20, 19} -> 2}, {20, 20}]; $CellContext`Iinj = 
+        Insert[
+          Table[
+          0, {19}], $CellContext`iinj$$, $CellContext`pos$$]; \
+$CellContext`psi = 50/(((4 $CellContext`Ri$$) 2) 2); $CellContext`v = 
+        Table[0, {20}]; $CellContext`soln = Table[$CellContext`v = (Dot[
+               Inverse[$CellContext`Cm], $CellContext`psi 
+               Dot[$CellContext`Bvn, $CellContext`v]] + 
+             Dot[$CellContext`Gm, $CellContext`v] + 
+             If[$CellContext`m <= $CellContext`dur$$, $CellContext`Iinj, 
+               0 $CellContext`Iinj]) 0.1 + $CellContext`v, {$CellContext`m, 1,
+            10, 1}]; Plot[
+         Interpolation[
+          Partition[
+           Riffle[
+            Table[$CellContext`j, {$CellContext`j, 0, 40, 2}], 
+            Part[$CellContext`soln, $CellContext`n$$]], 
+           2]][$CellContext`x], {$CellContext`x, 0, 40}, PlotRange -> {0, 30},
+          AxesLabel -> {
+          "x(\[Mu]m)", "\!\(\*SubscriptBox[\(V\), \(m\)]\)(mV)"}, 
+         PlotStyle -> {Black, Thick}, ImageSize -> {500, 300}]), 
+      "Specifications" :> {{{$CellContext`gm$$, 0.807, 
+          "\!\(\*SubscriptBox[\(G\), \(m\)]\)(mS/\!\(\*SuperscriptBox[\(cm\), \
+\(2\)]\))"}, 0.01, 
+         1.}, {{$CellContext`cm$$, 0.01, 
+          "\!\(\*SubscriptBox[\(C\), \
+\(m\)]\)(\[Mu]F/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))"}, 0.01, 
+         1.}, {{$CellContext`Ri$$, 149.4, 
+          "\!\(\*SubscriptBox[\(R\), \(i\)]\)(\[CapitalOmega]cm)"}, 100, 
+         200}, {{$CellContext`iinj$$, 16.3, 
+          "\!\(\*SubscriptBox[\(I\), \(max\)]\)(nA)"}, 0, 
+         20}, {{$CellContext`dur$$, 10, "current duration (ms)"}, 1, 10, 
+         1}, {{$CellContext`pos$$, 1, "injection position(\[Mu]m)"}, 1, 20, 
+         1}, {{$CellContext`n$$, 8, "time (ms)"}, 1, 10, 1}}, 
+      "Options" :> {
+       TrackedSymbols -> True, AutorunSequencing -> {1, 4, 6, 7}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{549., {274., 281.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->122381901],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`cm$$ = 0.01, $CellContext`dur$$ = 
+    6, $CellContext`gm$$ = 0.728, $CellContext`iinj$$ = 
+    11., $CellContext`n$$ = 8, $CellContext`pos$$ = 5, $CellContext`Ri$$ = 
+    100, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`gm$$], 0.728, 
+       "\!\(\*SubscriptBox[\(G\), \(m\)]\)(mS/\!\(\*SuperscriptBox[\(cm\), \
+\(2\)]\))"}, 0.01, 1.}, {{
+       Hold[$CellContext`cm$$], 0.01, 
+       "\!\(\*SubscriptBox[\(C\), \
+\(m\)]\)(\[Mu]F/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))"}, 0.01, 1.}, {{
+       Hold[$CellContext`Ri$$], 100, 
+       "\!\(\*SubscriptBox[\(R\), \(i\)]\)(\[CapitalOmega]cm)"}, 100, 200}, {{
+       Hold[$CellContext`iinj$$], 11., 
+       "\!\(\*SubscriptBox[\(I\), \(max\)]\)(nA)"}, 0, 20}, {{
+       Hold[$CellContext`dur$$], 6, "current duration (ms)"}, 1, 10, 1}, {{
+       Hold[$CellContext`pos$$], 5, "injection position(\[Mu]m)"}, 1, 20, 
+      1}, {{
+       Hold[$CellContext`n$$], 8, "time (ms)"}, 1, 10, 1}}, Typeset`size$$ = {
+    500., {148., 152.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`gm$8523$$ = 
+    0, $CellContext`cm$8524$$ = 0, $CellContext`Ri$8525$$ = 
+    0, $CellContext`iinj$8526$$ = 0, $CellContext`dur$8527$$ = 
+    0, $CellContext`pos$8528$$ = 0, $CellContext`n$8529$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`cm$$ = 0.01, $CellContext`dur$$ = 
+        6, $CellContext`gm$$ = 0.728, $CellContext`iinj$$ = 
+        11., $CellContext`n$$ = 8, $CellContext`pos$$ = 5, $CellContext`Ri$$ = 
+        100}, "ControllerVariables" :> {
+        Hold[$CellContext`gm$$, $CellContext`gm$8523$$, 0], 
+        Hold[$CellContext`cm$$, $CellContext`cm$8524$$, 0], 
+        Hold[$CellContext`Ri$$, $CellContext`Ri$8525$$, 0], 
+        Hold[$CellContext`iinj$$, $CellContext`iinj$8526$$, 0], 
+        Hold[$CellContext`dur$$, $CellContext`dur$8527$$, 0], 
+        Hold[$CellContext`pos$$, $CellContext`pos$8528$$, 0], 
+        Hold[$CellContext`n$$, $CellContext`n$8529$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ($CellContext`Gm = SparseArray[
+          DiagonalMatrix[
+           Table[$CellContext`gm$$, {20}]]]; $CellContext`Cm = SparseArray[
+          DiagonalMatrix[
+           Table[$CellContext`cm$$, {20}]]]; $CellContext`Bvn = SparseArray[{{
+             Pattern[$CellContext`i, 
+              Blank[]], 
+             Pattern[$CellContext`i, 
+              Blank[]]} -> -2, Condition[{
+              Pattern[$CellContext`i, 
+               Blank[]], 
+              Pattern[$CellContext`j, 
+               Blank[]]}, 
+             And[
+             Abs[$CellContext`i - $CellContext`j] == 
+              1, {$CellContext`i, $CellContext`j} != {1, 
+               2}, {$CellContext`i, $CellContext`j} != {20, 19}]] -> 
+           1, {1, 2} -> 2, {20, 19} -> 2}, {20, 20}]; $CellContext`Iinj = 
+        Insert[
+          Table[
+          0, {19}], $CellContext`iinj$$, $CellContext`pos$$]; \
+$CellContext`psi = 50/(((4 $CellContext`Ri$$) 2) 2); $CellContext`v = 
+        Table[0, {20}]; $CellContext`soln = Table[$CellContext`v = (Dot[
+               Inverse[$CellContext`Cm], $CellContext`psi 
+               Dot[$CellContext`Bvn, $CellContext`v]] + 
+             Dot[$CellContext`Gm, $CellContext`v] + 
+             If[$CellContext`m <= $CellContext`dur$$, $CellContext`Iinj, 
+               0 $CellContext`Iinj]) 0.1 + $CellContext`v, {$CellContext`m, 1,
+            10, 1}]; Plot[
+         Interpolation[
+          Partition[
+           Riffle[
+            Table[$CellContext`j, {$CellContext`j, 0, 40, 2}], 
+            Part[$CellContext`soln, $CellContext`n$$]], 
+           2]][$CellContext`x], {$CellContext`x, 0, 40}, PlotRange -> {0, 30},
+          AxesLabel -> {
+          "x(\[Mu]m)", "\!\(\*SubscriptBox[\(V\), \(m\)]\)(mV)"}, 
+         PlotStyle -> {Black, Thick}, ImageSize -> {500, 300}]), 
+      "Specifications" :> {{{$CellContext`gm$$, 0.728, 
+          "\!\(\*SubscriptBox[\(G\), \(m\)]\)(mS/\!\(\*SuperscriptBox[\(cm\), \
+\(2\)]\))"}, 0.01, 
+         1.}, {{$CellContext`cm$$, 0.01, 
+          "\!\(\*SubscriptBox[\(C\), \
+\(m\)]\)(\[Mu]F/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))"}, 0.01, 
+         1.}, {{$CellContext`Ri$$, 100, 
+          "\!\(\*SubscriptBox[\(R\), \(i\)]\)(\[CapitalOmega]cm)"}, 100, 
+         200}, {{$CellContext`iinj$$, 11., 
+          "\!\(\*SubscriptBox[\(I\), \(max\)]\)(nA)"}, 0, 
+         20}, {{$CellContext`dur$$, 6, "current duration (ms)"}, 1, 10, 
+         1}, {{$CellContext`pos$$, 5, "injection position(\[Mu]m)"}, 1, 20, 
+         1}, {{$CellContext`n$$, 8, "time (ms)"}, 1, 10, 1}}, 
+      "Options" :> {
+       TrackedSymbols -> True, AutorunSequencing -> {1, 4, 6, 7}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{549., {274., 281.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->1638720],
+
+Cell[BoxData[
+ TagBox[
+  StyleBox[
+   DynamicModuleBox[{$CellContext`cm$$ = 0.01, $CellContext`dur$$ = 
+    7, $CellContext`gm$$ = 0.678, $CellContext`iinj$$ = 
+    20., $CellContext`n$$ = 8, $CellContext`pos$$ = 17, $CellContext`Ri$$ = 
+    100, Typeset`show$$ = True, Typeset`bookmarkList$$ = {}, 
+    Typeset`bookmarkMode$$ = "Menu", Typeset`animator$$, Typeset`animvar$$ = 
+    1, Typeset`name$$ = "\"untitled\"", Typeset`specs$$ = {{{
+       Hold[$CellContext`gm$$], 0.678, 
+       "\!\(\*SubscriptBox[\(G\), \(m\)]\)(mS/\!\(\*SuperscriptBox[\(cm\), \
+\(2\)]\))"}, 0.01, 1.}, {{
+       Hold[$CellContext`cm$$], 0.01, 
+       "\!\(\*SubscriptBox[\(C\), \
+\(m\)]\)(\[Mu]F/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))"}, 0.01, 1.}, {{
+       Hold[$CellContext`Ri$$], 100, 
+       "\!\(\*SubscriptBox[\(R\), \(i\)]\)(\[CapitalOmega]cm)"}, 100, 200}, {{
+       Hold[$CellContext`iinj$$], 20., 
+       "\!\(\*SubscriptBox[\(I\), \(max\)]\)(nA)"}, 0, 20}, {{
+       Hold[$CellContext`dur$$], 7, "current duration (ms)"}, 1, 10, 1}, {{
+       Hold[$CellContext`pos$$], 17, "injection position(\[Mu]m)"}, 1, 20, 
+      1}, {{
+       Hold[$CellContext`n$$], 8, "time (ms)"}, 1, 10, 1}}, Typeset`size$$ = {
+    500., {148., 152.}}, Typeset`update$$ = 0, Typeset`initDone$$, 
+    Typeset`skipInitDone$$ = True, $CellContext`gm$8613$$ = 
+    0, $CellContext`cm$8614$$ = 0, $CellContext`Ri$8615$$ = 
+    0, $CellContext`iinj$8616$$ = 0, $CellContext`dur$8617$$ = 
+    0, $CellContext`pos$8618$$ = 0, $CellContext`n$8619$$ = 0}, 
+    DynamicBox[Manipulate`ManipulateBoxes[
+     1, StandardForm, 
+      "Variables" :> {$CellContext`cm$$ = 0.01, $CellContext`dur$$ = 
+        7, $CellContext`gm$$ = 0.678, $CellContext`iinj$$ = 
+        20., $CellContext`n$$ = 8, $CellContext`pos$$ = 17, $CellContext`Ri$$ = 
+        100}, "ControllerVariables" :> {
+        Hold[$CellContext`gm$$, $CellContext`gm$8613$$, 0], 
+        Hold[$CellContext`cm$$, $CellContext`cm$8614$$, 0], 
+        Hold[$CellContext`Ri$$, $CellContext`Ri$8615$$, 0], 
+        Hold[$CellContext`iinj$$, $CellContext`iinj$8616$$, 0], 
+        Hold[$CellContext`dur$$, $CellContext`dur$8617$$, 0], 
+        Hold[$CellContext`pos$$, $CellContext`pos$8618$$, 0], 
+        Hold[$CellContext`n$$, $CellContext`n$8619$$, 0]}, 
+      "OtherVariables" :> {
+       Typeset`show$$, Typeset`bookmarkList$$, Typeset`bookmarkMode$$, 
+        Typeset`animator$$, Typeset`animvar$$, Typeset`name$$, 
+        Typeset`specs$$, Typeset`size$$, Typeset`update$$, Typeset`initDone$$,
+         Typeset`skipInitDone$$}, "Body" :> ($CellContext`Gm = SparseArray[
+          DiagonalMatrix[
+           Table[$CellContext`gm$$, {20}]]]; $CellContext`Cm = SparseArray[
+          DiagonalMatrix[
+           Table[$CellContext`cm$$, {20}]]]; $CellContext`Bvn = SparseArray[{{
+             Pattern[$CellContext`i, 
+              Blank[]], 
+             Pattern[$CellContext`i, 
+              Blank[]]} -> -2, Condition[{
+              Pattern[$CellContext`i, 
+               Blank[]], 
+              Pattern[$CellContext`j, 
+               Blank[]]}, 
+             And[
+             Abs[$CellContext`i - $CellContext`j] == 
+              1, {$CellContext`i, $CellContext`j} != {1, 
+               2}, {$CellContext`i, $CellContext`j} != {20, 19}]] -> 
+           1, {1, 2} -> 2, {20, 19} -> 2}, {20, 20}]; $CellContext`Iinj = 
+        Insert[
+          Table[
+          0, {19}], $CellContext`iinj$$, $CellContext`pos$$]; \
+$CellContext`psi = 50/(((4 $CellContext`Ri$$) 2) 2); $CellContext`v = 
+        Table[0, {20}]; $CellContext`soln = Table[$CellContext`v = (Dot[
+               Inverse[$CellContext`Cm], $CellContext`psi 
+               Dot[$CellContext`Bvn, $CellContext`v]] + 
+             Dot[$CellContext`Gm, $CellContext`v] + 
+             If[$CellContext`m <= $CellContext`dur$$, $CellContext`Iinj, 
+               0 $CellContext`Iinj]) 0.1 + $CellContext`v, {$CellContext`m, 1,
+            10, 1}]; Plot[
+         Interpolation[
+          Partition[
+           Riffle[
+            Table[$CellContext`j, {$CellContext`j, 0, 40, 2}], 
+            Part[$CellContext`soln, $CellContext`n$$]], 
+           2]][$CellContext`x], {$CellContext`x, 0, 40}, PlotRange -> {0, 30},
+          AxesLabel -> {
+          "x(\[Mu]m)", "\!\(\*SubscriptBox[\(V\), \(m\)]\)(mV)"}, 
+         PlotStyle -> {Black, Thick}, ImageSize -> {500, 300}]), 
+      "Specifications" :> {{{$CellContext`gm$$, 0.678, 
+          "\!\(\*SubscriptBox[\(G\), \(m\)]\)(mS/\!\(\*SuperscriptBox[\(cm\), \
+\(2\)]\))"}, 0.01, 
+         1.}, {{$CellContext`cm$$, 0.01, 
+          "\!\(\*SubscriptBox[\(C\), \
+\(m\)]\)(\[Mu]F/\!\(\*SuperscriptBox[\(cm\), \(2\)]\))"}, 0.01, 
+         1.}, {{$CellContext`Ri$$, 100, 
+          "\!\(\*SubscriptBox[\(R\), \(i\)]\)(\[CapitalOmega]cm)"}, 100, 
+         200}, {{$CellContext`iinj$$, 20., 
+          "\!\(\*SubscriptBox[\(I\), \(max\)]\)(nA)"}, 0, 
+         20}, {{$CellContext`dur$$, 7, "current duration (ms)"}, 1, 10, 
+         1}, {{$CellContext`pos$$, 17, "injection position(\[Mu]m)"}, 1, 20, 
+         1}, {{$CellContext`n$$, 8, "time (ms)"}, 1, 10, 1}}, 
+      "Options" :> {
+       TrackedSymbols -> True, AutorunSequencing -> {1, 4, 6, 7}}, 
+      "DefaultOptions" :> {ControllerLinking -> True}],
+     ImageSizeCache->{549., {274., 281.}},
+     SingleEvaluation->True],
+    Deinitialization:>None,
+    DynamicModuleValues:>{},
+    SynchronousInitialization->True,
+    UnsavedVariables:>{Typeset`initDone$$},
+    UntrackedVariables:>{Typeset`size$$}], "Manipulate",
+   Deployed->True,
+   StripOnInput->False],
+  Manipulate`InterpretManipulate[1]]], "Output",
+ CellID->253349679]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "DetailsSection"],
+
+Cell["\<\
+The cable equation is a linear parabolic partial differential equation, in \
+the same class as the heat and diffusion equations,\
+\>", "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.462182892540382*^9, 3.46218297224649*^9}, 
+   3.462184358647357*^9, 3.462362518761264*^9},
+ CellID->1616825920],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{
+    RowBox[{
+     SubscriptBox["C", "m"], 
+     FractionBox[
+      RowBox[{"\[PartialD]", " ", 
+       RowBox[{
+        SubscriptBox["V", "m"], "(", 
+        RowBox[{"x", ",", " ", "t"}], ")"}]}], 
+      RowBox[{"\[PartialD]", " ", "t"}]]}], "=", 
+    RowBox[{
+     RowBox[{
+      FractionBox["d", 
+       RowBox[{"4", 
+        SubscriptBox["R", "i"]}]], 
+      FractionBox[
+       RowBox[{
+        SuperscriptBox["\[PartialD]", "2"], 
+        RowBox[{
+         SubscriptBox["V", "m"], "(", 
+         RowBox[{"x", " ", ",", "t"}], ")"}]}], 
+       RowBox[{"\[PartialD]", 
+        SuperscriptBox["x", "2"]}]]}], "-", 
+     RowBox[{
+      SubscriptBox["G", "m"], 
+      RowBox[{"V", "(", 
+       RowBox[{"x", ",", "t"}], ")"}]}], "+", 
+     RowBox[{"I", "(", 
+      RowBox[{"x", ",", "t"}], ")"}]}]}], TraditionalForm]], "InlineMath"],
+ ","
+}], "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.462183051131364*^9, 3.4621832583092337`*^9}, {
+   3.462183301439011*^9, 3.462183304553068*^9}},
+ CellID->1882651949],
+
+Cell[TextData[{
+ "where ",
+ Cell[BoxData[
+  FormBox["d", TraditionalForm]], "InlineMath"],
+ " is the cable diameter (50 ",
+ Cell[BoxData[
+  FormBox["\[Mu]", TraditionalForm]], "InlineMath"],
+ "m in this Demonstration) and ",
+ Cell[BoxData[
+  FormBox["I", TraditionalForm]], "InlineMath"],
+ " is the input current. There are analytical solutions to this equation for \
+special cases, but it is often more efficient and as accurate to break the \
+cable into isopotential compartments so that the partial differential \
+equation becomes a set of ordinary differential equations, one for each \
+compartment. Such a system can be solved, with appropriate initial and \
+boundary conditions, as a sparse-matrix-vector-valued differential equation, \
+which is the route taken in this Demonstration."
+}], "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.462183259576436*^9, 3.462183295497006*^9}, {
+   3.462183332294714*^9, 3.4621833471422577`*^9}, {3.4621835179926357`*^9, 
+   3.462183679118763*^9}, 3.4621844142677383`*^9, {3.462293433551035*^9, 
+   3.462293448334513*^9}, 3.46255170113326*^9},
+ CellID->707251945],
+
+Cell[TextData[{
+ "The membrane parameters of the cable equation have different effects upon \
+changes in the voltage distribution. This is most easily seen by considering \
+the membrane length constant (",
+ Cell[BoxData[
+  FormBox["\[Lambda]", TraditionalForm]], "InlineMath"],
+ ") and time constant (",
+ Cell[BoxData[
+  FormBox["\[Tau]", TraditionalForm]], "InlineMath"],
+ "). Expressing these values in terms of membrane parameters,"
+}], "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.462183685878902*^9, 3.4621837741185226`*^9}, {
+   3.4621838151993628`*^9, 3.462183832923848*^9}, {3.4622934335680366`*^9, 
+   3.4622934418108606`*^9}},
+ CellID->461453470],
+
+Cell[TextData[{
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Lambda]", "=", 
+    SqrtBox[
+     FractionBox["d", 
+      RowBox[{"4", 
+       SubscriptBox["G", "m"], 
+       SubscriptBox["R", "i"]}]]]}], TraditionalForm]], "InlineMath"],
+ ", ",
+ Cell[BoxData[
+  FormBox[
+   RowBox[{"\[Tau]", "=", 
+    FractionBox[
+     SubscriptBox["C", "m"], 
+     SubscriptBox["G", "m"]]}], TraditionalForm]], "InlineMath"],
+ "."
+}], "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4621838451511383`*^9, 3.462183965292428*^9}},
+ CellID->1085020973],
+
+Cell["\<\
+The length constant determines signal attenuation in space, where a larger \
+value corresponds to less spatial signal attenuation. The time constant \
+determines signal attenuation in time, where a larger value corresponds to \
+less temporal signal attenuation.\
+\>", "DetailNotes",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.462183985668212*^9, 3.4621840068603354`*^9}, {
+   3.4621840495617437`*^9, 3.462184079449893*^9}, {3.46218412052353*^9, 
+   3.462184153260024*^9}, 3.462293433581038*^9},
+ CellID->1663846534]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "ControlSuggestionsSection"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Resize Images"]}],
+  "\"Click inside an image to reveal its orange resize frame.\\nDrag any of \
+the orange resize handles to resize the image.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.46229345600528*^9},
+ FontFamily->"Verdana",
+ CellTags->"ResizeImages"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Rotate and Zoom in 3D"]}],
+  RowBox[{
+   "\"Drag a 3D graphic to rotate it. Starting the drag near the center \
+tumbles\\nthe graphic; starting near a corner turns it parallel to the plane \
+of the screen.\\nHold down \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" (or \"", 
+    FrameBox[
+    "Cmd", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" on Mac) and drag up and down to zoom.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"RotateAndZoomIn3D"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Drag Locators"]}],
+  RowBox[{"\"Drag any locator (\"", 
+    GraphicsBox[
+     LocatorBox[
+      Scaled[{0.5, 0.5}]], ImageSize -> 20], 
+    "\", etc.) to move it around.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"DragLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Create and Delete Locators"]}],
+  RowBox[{"\"Insert a new locator in the graphic by holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key\\nand clicking where you want it to be. Delete a locator by \
+clicking it\\nwhile holding down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" key.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"CreateAndDeleteLocators"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Slider Zoom"]}],
+  RowBox[{"\"Hold down the \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], 
+    "\" key while moving a slider to make fine adjustments in the slider \
+value.\\nHold \"", 
+    FrameBox[
+    "Ctrl", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" and/or \"", 
+    FrameBox[
+    "Shift", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" at the same time as \"", 
+    FrameBox[
+    "Alt", Background -> GrayLevel[0.9], FrameMargins -> 2, FrameStyle -> 
+     GrayLevel[0.9]], "\" to make ever finer adjustments.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.462362594479045*^9},
+ FontFamily->"Verdana",
+ CellTags->"SliderZoom"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Gamepad Controls"]}],
+  "\"Control this Demonstration with a gamepad or other\\nhuman interface \
+device connected to your computer.\"",
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.3895522232313623`*^9, 
+  3.4622934570693865`*^9},
+ FontFamily->"Verdana",
+ CellTags->"GamepadControls"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[True], Cell[" Automatic Animation"]}],
+  RowBox[{"\"Animate a slider in this Demonstration by clicking the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJzzTSzJSM1NLMlMTlRwL0osyMhMLlZwyy8CCjEzMjAwcIKwAgOI/R/IhBKc\n\
+/4EAyGAG0f+nTZsGwgysIJIRKsWKLAXGIHFmEpUgLADxWUAkI24jZs+eTaEt\n\
+IG+wQKRmzJgBlYf5lhEA30OqWA=="], "Graphics", ImageSize -> {9, 9}, ImageMargins -> 
+      0, CellBaseline -> Baseline], BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"button\\nnext to the slider, and then clicking the play button that \
+appears.\\nAnimate all controls by selecting \"", 
+    StyleBox["Autorun", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ CellChangeTimes->{3.35696210375764*^9, 3.4623625952134104`*^9},
+ FontFamily->"Verdana",
+ CellTags->"AutomaticAnimation"],
+
+Cell[BoxData[
+ TooltipBox[
+  RowBox[{
+   CheckboxBox[False], Cell[" Bookmark Animation"]}],
+  RowBox[{
+   "\"See a prepared animation of this Demonstration by selecting\\n\"", 
+    StyleBox["Animate Bookmarks", FontWeight -> "Bold"], "\" from the\"", 
+    AdjustmentBox[
+     Cell[
+      GraphicsData[
+      "CompressedBitmap", 
+       "eJyNULENwyAQfEySIlMwTVJlCGRFsosokeNtqBmDBagoaZjAI1C8/8GUUUC6\n\
+57h7cQ8PvU7Pl17nUav7oj/TPH7V7b2QJAUAXBkKmCPRowxICy64bRvGGNF7\n\
+X8CctGoDSN4xhIDGGDhzFXwUh3/ClBKrDQPmnGXtI6u0OOd+tZBVUqy1xSaH\n\
+UqiK6pPe4XdEdAz6563tx/gejuORGMxJaz8mdpJn7hc="], "Graphics", 
+      ImageSize -> {10, 10}, ImageMargins -> 0, CellBaseline -> Baseline], 
+     BoxBaselineShift -> 0.1839080459770115, 
+     BoxMargins -> {{0., 0.}, {-0.1839080459770115, 0.1839080459770115}}], 
+    "\"menu.\""}],
+  TooltipDelay->0.35]], "ControlSuggestions",
+ FontFamily->"Verdana",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "SearchTermsSection"],
+
+Cell["biology", "SearchTerms",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.4621841965499773`*^9, 3.462184197707967*^9}},
+ CellID->1884129351],
+
+Cell["biophysics", "SearchTerms",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.462184200718132*^9, 3.4621842023877974`*^9}},
+ CellID->1915627242],
+
+Cell["neuron", "SearchTerms",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.46218420466892*^9, 3.462184205363797*^9}},
+ CellID->872220470],
+
+Cell["partial differential equation", "SearchTerms",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.46218420910524*^9, 3.462184214107739*^9}},
+ CellID->686064868],
+
+Cell["cable equation", "SearchTerms",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.462184218481351*^9, 3.4621842206597767`*^9}},
+ CellID->852535733]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "RelatedLinksSection"],
+
+Cell[TextData[ButtonBox["Partial Differential Equation",
+ BaseStyle->"Hyperlink",
+ ButtonData->{
+   URL["http://mathworld.wolfram.com/PartialDifferentialEquation.html"], None},
+ ButtonNote->
+  "http://mathworld.wolfram.com/PartialDifferentialEquation.html"]], \
+"RelatedLinks",
+ CellID->362336093]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell["", "AuthorSection"],
+
+Cell[TextData[{
+ "Contributed by: ",
+ ButtonBox["Garrett Neske",
+  BaseStyle->"Hyperlink",
+  ButtonData->{
+    URL["http://demonstrations.wolfram.com/author.html?author=Garrett+Neske"],
+     None},
+  ButtonNote->
+   "http://demonstrations.wolfram.com/author.html?author=Garrett+Neske"]
+}], "Author",
+ CellChangeTimes->{
+  3.35696210375764*^9, {3.462184231805626*^9, 3.4621842338277273`*^9}}]
+}, Open  ]]
+}, Open  ]]
+},
+WindowSize->{1280, 942},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
+FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
+StyleDefinitions->FrontEnd`FileName[{"Wolfram"}, "Demonstration.nb", 
+  CharacterEncoding -> "CP936"]
+]
+(* End of Notebook Content *)
+
+(* Internal cache information *)
+(*CellTagsOutline
+CellTagsIndex->{
+ "ResizeImages"->{
+  Cell[42848, 973, 373, 9, 29, "ControlSuggestions",
+   CellTags->"ResizeImages"]},
+ "RotateAndZoomIn3D"->{
+  Cell[43224, 984, 678, 16, 29, "ControlSuggestions",
+   CellTags->"RotateAndZoomIn3D"]},
+ "DragLocators"->{
+  Cell[43905, 1002, 340, 11, 29, "ControlSuggestions",
+   CellTags->"DragLocators"]},
+ "CreateAndDeleteLocators"->{
+  Cell[44248, 1015, 637, 15, 29, "ControlSuggestions",
+   CellTags->"CreateAndDeleteLocators"]},
+ "SliderZoom"->{
+  Cell[44888, 1032, 906, 22, 29, "ControlSuggestions",
+   CellTags->"SliderZoom"]},
+ "GamepadControls"->{
+  Cell[45797, 1056, 395, 10, 29, "ControlSuggestions",
+   CellTags->"GamepadControls"]},
+ "AutomaticAnimation"->{
+  Cell[46195, 1068, 1528, 32, 29, "ControlSuggestions",
+   CellTags->"AutomaticAnimation"]},
+ "BookmarkAnimation"->{
+  Cell[47726, 1102, 908, 21, 29, "ControlSuggestions",
+   CellTags->"BookmarkAnimation"]}
+ }
+*)
+(*CellTagsIndex
+CellTagsIndex->{
+ {"ResizeImages", 50677, 1200},
+ {"RotateAndZoomIn3D", 50785, 1203},
+ {"DragLocators", 50894, 1206},
+ {"CreateAndDeleteLocators", 51010, 1209},
+ {"SliderZoom", 51124, 1212},
+ {"GamepadControls", 51230, 1215},
+ {"AutomaticAnimation", 51344, 1218},
+ {"BookmarkAnimation", 51461, 1221}
+ }
+*)
+(*NotebookFileOutline
+Notebook[{
+Cell[CellGroupData[{
+Cell[567, 22, 141, 2, 74, "DemoTitle"],
+Cell[711, 26, 33, 0, 287, "InitializationSection"],
+Cell[CellGroupData[{
+Cell[769, 30, 29, 0, 192, "ManipulateSection"],
+Cell[CellGroupData[{
+Cell[823, 34, 7555, 192, 337, "Input",
+ CellID->355081776],
+Cell[8381, 228, 5802, 112, 600, "Output",
+ CellID->296831817]
+}, Open  ]]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[14232, 346, 36, 0, 169, "ManipulateCaptionSection"],
+Cell[14271, 348, 1532, 35, 69, "ManipulateCaption"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[15840, 388, 28, 0, 173, "ThumbnailSection"],
+Cell[15871, 390, 5647, 110, 567, "Output",
+ CellID->172565745]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[21555, 505, 28, 0, 143, "SnapshotsSection"],
+Cell[21586, 507, 5626, 109, 576, "Output",
+ CellID->122381901],
+Cell[27215, 618, 5608, 109, 576, "Output",
+ CellID->1638720],
+Cell[32826, 729, 5614, 109, 576, "Output",
+ CellID->253349679]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[38477, 843, 26, 0, 332, "DetailsSection"],
+Cell[38506, 845, 317, 7, 35, "DetailNotes",
+ CellID->1616825920],
+Cell[38826, 854, 1074, 36, 39, "DetailNotes",
+ CellID->1882651949],
+Cell[39903, 892, 1119, 23, 94, "DetailNotes",
+ CellID->707251945],
+Cell[41025, 917, 672, 15, 51, "DetailNotes",
+ CellID->461453470],
+Cell[41700, 934, 540, 20, 48, "DetailNotes",
+ CellID->1085020973],
+Cell[42243, 956, 528, 10, 49, "DetailNotes",
+ CellID->1663846534]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[42808, 971, 37, 0, 120, "ControlSuggestionsSection"],
+Cell[42848, 973, 373, 9, 29, "ControlSuggestions",
+ CellTags->"ResizeImages"],
+Cell[43224, 984, 678, 16, 29, "ControlSuggestions",
+ CellTags->"RotateAndZoomIn3D"],
+Cell[43905, 1002, 340, 11, 29, "ControlSuggestions",
+ CellTags->"DragLocators"],
+Cell[44248, 1015, 637, 15, 29, "ControlSuggestions",
+ CellTags->"CreateAndDeleteLocators"],
+Cell[44888, 1032, 906, 22, 29, "ControlSuggestions",
+ CellTags->"SliderZoom"],
+Cell[45797, 1056, 395, 10, 29, "ControlSuggestions",
+ CellTags->"GamepadControls"],
+Cell[46195, 1068, 1528, 32, 29, "ControlSuggestions",
+ CellTags->"AutomaticAnimation"],
+Cell[47726, 1102, 908, 21, 29, "ControlSuggestions",
+ CellTags->"BookmarkAnimation"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[48671, 1128, 30, 0, 152, "SearchTermsSection"],
+Cell[48704, 1130, 143, 3, 21, "SearchTerms",
+ CellID->1884129351],
+Cell[48850, 1135, 146, 3, 21, "SearchTerms",
+ CellID->1915627242],
+Cell[48999, 1140, 138, 3, 21, "SearchTerms",
+ CellID->872220470],
+Cell[49140, 1145, 161, 3, 21, "SearchTerms",
+ CellID->686064868],
+Cell[49304, 1150, 149, 3, 21, "SearchTerms",
+ CellID->852535733]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49490, 1158, 31, 0, 138, "RelatedLinksSection"],
+Cell[49524, 1160, 297, 7, 21, "RelatedLinks",
+ CellID->362336093]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[49858, 1172, 25, 0, 136, "AuthorSection"],
+Cell[49886, 1174, 391, 11, 21, "Author"]
+}, Open  ]]
+}, Open  ]]
+}
+]
+*)
+
+(* End of internal cache information *)
