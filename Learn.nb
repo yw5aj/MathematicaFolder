@@ -10,10 +10,10 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     54958,       1438]
-NotebookOptionsPosition[     54265,       1412]
-NotebookOutlinePosition[     54614,       1427]
-CellTagsIndexPosition[     54571,       1424]
+NotebookDataLength[     61592,       1663]
+NotebookOptionsPosition[     60439,       1621]
+NotebookOutlinePosition[     60786,       1636]
+CellTagsIndexPosition[     60743,       1633]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
@@ -1408,10 +1408,219 @@ Cell[BoxData[
    3.631368757089792*^9, 3.6313688413056087`*^9}, 3.6313689223022413`*^9, {
    3.6313689665307713`*^9, 3.6313689696649504`*^9}, {3.6313701188836823`*^9, 
    3.631370131283391*^9}, 3.6313701965371237`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Yt", " ", "=", " ", 
+  RowBox[{"Sum", "[", 
+   RowBox[{
+    RowBox[{
+     SubscriptBox["G", "i"], "*", 
+     RowBox[{"Exp", "[", 
+      RowBox[{
+       RowBox[{"-", "t"}], " ", "/", " ", 
+       SubscriptBox["\[Tau]", "i"]}], "]"}]}], ",", " ", 
+    RowBox[{"{", 
+     RowBox[{"i", ",", " ", "1", ",", " ", "n"}], "}"}]}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.6363029676816454`*^9, 3.636303055696679*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  UnderoverscriptBox["\[Sum]", 
+   RowBox[{"i", "=", "1"}], "n"], 
+  RowBox[{
+   SuperscriptBox["\[ExponentialE]", 
+    RowBox[{"-", 
+     FractionBox["t", 
+      SubscriptBox["\[Tau]", "i"]]}]], " ", 
+   SubscriptBox["G", "i"]}]}]], "Output",
+ CellChangeTimes->{3.636303011248137*^9, 3.6363030568687468`*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Ys", " ", "=", " ", 
+  RowBox[{"LaplaceTransform", "[", 
+   RowBox[{"Yt", ",", " ", "t", ",", " ", "s"}], "]"}]}]], "Input",
+ CellChangeTimes->{{3.636303076569873*^9, 3.6363030821711936`*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  UnderoverscriptBox["\[Sum]", 
+   RowBox[{"i", "=", "1"}], "n"], 
+  FractionBox[
+   SubscriptBox["G", "i"], 
+   RowBox[{"s", "+", 
+    FractionBox["1", 
+     SubscriptBox["\[Tau]", "i"]]}]]}]], "Output",
+ CellChangeTimes->{3.636303082583217*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Js", " ", "=", " ", 
+  RowBox[{
+   RowBox[{"1", " ", "/", " ", 
+    RowBox[{"s", "^", "2"}]}], " ", "/", " ", "Ys"}]}]], "Input",
+ CellChangeTimes->{{3.6363030933068304`*^9, 3.63630310011622*^9}}],
+
+Cell[BoxData[
+ FractionBox["1", 
+  RowBox[{
+   SuperscriptBox["s", "2"], " ", 
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"i", "=", "1"}], "n"], 
+    FractionBox[
+     SubscriptBox["G", "i"], 
+     RowBox[{"s", "+", 
+      FractionBox["1", 
+       SubscriptBox["\[Tau]", "i"]]}]]}]}]]], "Output",
+ CellChangeTimes->{3.636303100484241*^9}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Jt", " ", "=", " ", 
+  RowBox[{"InverseLaplaceTransform", "[", 
+   RowBox[{
+    RowBox[{"Js", "/.", 
+     RowBox[{"n", "\[Rule]", "2"}]}], ",", " ", "s", ",", " ", "t"}], 
+   "]"}]}]], "Input",
+ CellChangeTimes->{{3.6363031025493593`*^9, 3.6363031095347586`*^9}, {
+  3.636303240367242*^9, 3.6363032495937696`*^9}}],
+
+Cell[BoxData[
+ FractionBox[
+  RowBox[{
+   RowBox[{"t", " ", 
+    SubsuperscriptBox["G", "1", "2"], " ", 
+    SubscriptBox["\[Tau]", "1"]}], "+", 
+   RowBox[{"t", " ", 
+    SubscriptBox["G", "1"], " ", 
+    SubscriptBox["G", "2"], " ", 
+    SubscriptBox["\[Tau]", "1"]}], "+", 
+   RowBox[{
+    SubsuperscriptBox["G", "1", "2"], " ", 
+    SubsuperscriptBox["\[Tau]", "1", "2"]}], "+", 
+   RowBox[{
+    SubscriptBox["G", "1"], " ", 
+    SubscriptBox["G", "2"], " ", 
+    SubsuperscriptBox["\[Tau]", "1", "2"]}], "-", 
+   RowBox[{
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"t", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", 
+         FractionBox[
+          SubscriptBox["G", "2"], 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             SubscriptBox["G", "1"], "+", 
+             SubscriptBox["G", "2"]}], ")"}], " ", 
+           SubscriptBox["\[Tau]", "1"]}]]}], "-", 
+        FractionBox[
+         SubscriptBox["G", "1"], 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            SubscriptBox["G", "1"], "+", 
+            SubscriptBox["G", "2"]}], ")"}], " ", 
+          SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+    SubscriptBox["G", "1"], " ", 
+    SubscriptBox["G", "2"], " ", 
+    SubsuperscriptBox["\[Tau]", "1", "2"]}], "+", 
+   RowBox[{"t", " ", 
+    SubscriptBox["G", "1"], " ", 
+    SubscriptBox["G", "2"], " ", 
+    SubscriptBox["\[Tau]", "2"]}], "+", 
+   RowBox[{"t", " ", 
+    SubsuperscriptBox["G", "2", "2"], " ", 
+    SubscriptBox["\[Tau]", "2"]}], "+", 
+   RowBox[{"2", " ", 
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"t", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", 
+         FractionBox[
+          SubscriptBox["G", "2"], 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             SubscriptBox["G", "1"], "+", 
+             SubscriptBox["G", "2"]}], ")"}], " ", 
+           SubscriptBox["\[Tau]", "1"]}]]}], "-", 
+        FractionBox[
+         SubscriptBox["G", "1"], 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            SubscriptBox["G", "1"], "+", 
+            SubscriptBox["G", "2"]}], ")"}], " ", 
+          SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+    SubscriptBox["G", "1"], " ", 
+    SubscriptBox["G", "2"], " ", 
+    SubscriptBox["\[Tau]", "1"], " ", 
+    SubscriptBox["\[Tau]", "2"]}], "+", 
+   RowBox[{
+    SubscriptBox["G", "1"], " ", 
+    SubscriptBox["G", "2"], " ", 
+    SubsuperscriptBox["\[Tau]", "2", "2"]}], "-", 
+   RowBox[{
+    SuperscriptBox["\[ExponentialE]", 
+     RowBox[{"t", " ", 
+      RowBox[{"(", 
+       RowBox[{
+        RowBox[{"-", 
+         FractionBox[
+          SubscriptBox["G", "2"], 
+          RowBox[{
+           RowBox[{"(", 
+            RowBox[{
+             SubscriptBox["G", "1"], "+", 
+             SubscriptBox["G", "2"]}], ")"}], " ", 
+           SubscriptBox["\[Tau]", "1"]}]]}], "-", 
+        FractionBox[
+         SubscriptBox["G", "1"], 
+         RowBox[{
+          RowBox[{"(", 
+           RowBox[{
+            SubscriptBox["G", "1"], "+", 
+            SubscriptBox["G", "2"]}], ")"}], " ", 
+          SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+    SubscriptBox["G", "1"], " ", 
+    SubscriptBox["G", "2"], " ", 
+    SubsuperscriptBox["\[Tau]", "2", "2"]}], "+", 
+   RowBox[{
+    SubsuperscriptBox["G", "2", "2"], " ", 
+    SubsuperscriptBox["\[Tau]", "2", "2"]}]}], 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     SubscriptBox["G", "1"], "+", 
+     SubscriptBox["G", "2"]}], ")"}], " ", 
+   SuperscriptBox[
+    RowBox[{"(", 
+     RowBox[{
+      RowBox[{
+       SubscriptBox["G", "1"], " ", 
+       SubscriptBox["\[Tau]", "1"]}], "+", 
+      RowBox[{
+       SubscriptBox["G", "2"], " ", 
+       SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]]], "Output",
+ CellChangeTimes->{3.6363031411585674`*^9, 3.6363032512468643`*^9}]
 }, Open  ]]
 },
-WindowSize->{1280, 982},
-WindowMargins->{{1272, Automatic}, {Automatic, -8}},
+WindowSize->{1280, 942},
+WindowMargins->{{-8, Automatic}, {Automatic, -8}},
 FrontEndVersion->"10.0 for Microsoft Windows (64-bit) (September 9, 2014)",
 StyleDefinitions->"Default.nb"
 ]
@@ -1439,6 +1648,22 @@ Cell[38843, 999, 3744, 103, 142, "Output"]
 Cell[CellGroupData[{
 Cell[42624, 1107, 487, 10, 31, "Input"],
 Cell[43114, 1119, 11135, 290, 319, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[54286, 1414, 433, 12, 31, "Input"],
+Cell[54722, 1428, 333, 10, 55, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[55092, 1443, 216, 4, 31, "Input"],
+Cell[55311, 1449, 270, 9, 61, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[55618, 1463, 220, 5, 31, "Input"],
+Cell[55841, 1470, 354, 12, 67, "Output"]
+}, Open  ]],
+Cell[CellGroupData[{
+Cell[56232, 1487, 338, 8, 31, "Input"],
+Cell[56573, 1497, 3850, 121, 66, "Output"]
 }, Open  ]]
 }
 ]

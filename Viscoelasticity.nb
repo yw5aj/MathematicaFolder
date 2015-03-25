@@ -10,96 +10,98 @@
 NotebookFileLineBreakTest
 NotebookFileLineBreakTest
 NotebookDataPosition[       158,          7]
-NotebookDataLength[     76750,       2035]
-NotebookOptionsPosition[     76211,       2011]
-NotebookOutlinePosition[     76558,       2026]
-CellTagsIndexPosition[     76515,       2023]
+NotebookDataLength[     77552,       2194]
+NotebookOptionsPosition[     77000,       2170]
+NotebookOutlinePosition[     77347,       2185]
+CellTagsIndexPosition[     77304,       2182]
 WindowFrame->Normal*)
 
 (* Beginning of Notebook Content *)
 Notebook[{
 
 Cell[CellGroupData[{
-Cell[BoxData[
- RowBox[{"Yt", " ", "=", " ", 
+Cell[BoxData[{
+ RowBox[{
   RowBox[{
-   RowBox[{
-    SubscriptBox["G", "1"], "  ", "*", " ", 
-    RowBox[{"Exp", "[", 
+   SubscriptBox["G", "\[Infinity]"], "=", 
+   RowBox[{"1", " ", "-", " ", 
+    RowBox[{"Sum", "[", 
      RowBox[{
-      RowBox[{"-", "t"}], " ", "/", " ", 
-      SubscriptBox["\[Tau]", "1"]}], "]"}]}], " ", "+", " ", 
+      SubscriptBox["G", "i"], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", " ", "1", ",", " ", "n"}], "}"}]}], "]"}]}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Yt", " ", "=", " ", 
    RowBox[{
-    SubscriptBox["G", "2"], " ", "*", " ", 
-    RowBox[{"Exp", "[", 
+    RowBox[{"Sum", "[", 
      RowBox[{
-      RowBox[{"-", "t"}], " ", "/", " ", 
-      SubscriptBox["\[Tau]", "2"]}], "]"}]}], " ", "+", " ", 
-   SubscriptBox["G", "\[Infinity]"]}]}]], "Input",
- CellChangeTimes->{{3.6362932019380765`*^9, 3.63629322525241*^9}, {
-  3.636294221936417*^9, 3.636294233439075*^9}, {3.6362947895608835`*^9, 
-  3.636294876624863*^9}}],
+      RowBox[{
+       SubscriptBox["G", "i"], "*", 
+       RowBox[{"Exp", "[", 
+        RowBox[{
+         RowBox[{"-", "t"}], " ", "/", " ", 
+         SubscriptBox["\[Tau]", "i"]}], "]"}]}], ",", " ", 
+      RowBox[{"{", 
+       RowBox[{"i", ",", " ", "1", ",", " ", "n"}], "}"}]}], "]"}], " ", "+", 
+    " ", 
+    SubscriptBox["G", "\[Infinity]"]}]}], ";"}], "\[IndentingNewLine]", 
+ RowBox[{
+  RowBox[{"Ys", " ", "=", " ", 
+   RowBox[{"LaplaceTransform", "[", 
+    RowBox[{"Yt", ",", " ", "t", ",", " ", "s"}], "]"}]}], ";"}]}], "Input",
+ CellChangeTimes->{{3.6363033163425875`*^9, 3.636303341356018*^9}, {
+  3.63630361623374*^9, 3.6363036749160967`*^9}, {3.6363038819349375`*^9, 
+  3.6363039735521774`*^9}, {3.636304074598957*^9, 3.636304123238739*^9}, {
+  3.6363041794849567`*^9, 3.6363041933537493`*^9}, {3.6363043718409586`*^9, 
+  3.6363043933821907`*^9}, {3.636304601618101*^9, 3.6363046021911335`*^9}, {
+  3.6363047732949204`*^9, 3.6363047827614617`*^9}, {3.636304822851755*^9, 
+  3.6363048443029814`*^9}}],
 
 Cell[BoxData[
  RowBox[{
+  FractionBox["1", "s"], "-", 
+  FractionBox[
+   RowBox[{
+    UnderoverscriptBox["\[Sum]", 
+     RowBox[{"i", "=", "1"}], "n"], 
+    SubscriptBox["G", "i"]}], "s"], "+", 
   RowBox[{
-   SuperscriptBox["\[ExponentialE]", 
-    RowBox[{"-", 
-     FractionBox["t", 
-      SubscriptBox["\[Tau]", "1"]]}]], " ", 
-   SubscriptBox["G", "1"]}], "+", 
-  RowBox[{
-   SuperscriptBox["\[ExponentialE]", 
-    RowBox[{"-", 
-     FractionBox["t", 
-      SubscriptBox["\[Tau]", "2"]]}]], " ", 
-   SubscriptBox["G", "2"]}], "+", 
-  SubscriptBox["G", "\[Infinity]"]}]], "Output",
- CellChangeTimes->{3.636293225620431*^9, 3.636294166925271*^9, 
-  3.636294234241121*^9, 3.63629487795994*^9}]
+   UnderoverscriptBox["\[Sum]", 
+    RowBox[{"i", "=", "1"}], "n"], 
+   FractionBox[
+    SubscriptBox["G", "i"], 
+    RowBox[{"s", "+", 
+     FractionBox["1", 
+      SubscriptBox["\[Tau]", "i"]]}]]}]}]], "Output",
+ CellChangeTimes->{{3.6363047926820292`*^9, 3.6363048081599145`*^9}}]
 }, Open  ]],
 
 Cell[CellGroupData[{
 
-Cell[BoxData[
- RowBox[{"Ys", " ", "=", " ", 
-  RowBox[{"LaplaceTransform", "[", 
-   RowBox[{"Yt", ",", " ", "t", ",", " ", "s"}], "]"}]}]], "Input",
- CellChangeTimes->{{3.636293234642947*^9, 3.636293242494396*^9}}],
-
-Cell[BoxData[
+Cell[BoxData[{
  RowBox[{
-  FractionBox[
-   SubscriptBox["G", "\[Infinity]"], "s"], "+", 
-  FractionBox[
-   SubscriptBox["G", "1"], 
-   RowBox[{"s", "+", 
-    FractionBox["1", 
-     SubscriptBox["\[Tau]", "1"]]}]], "+", 
-  FractionBox[
-   SubscriptBox["G", "2"], 
-   RowBox[{"s", "+", 
-    FractionBox["1", 
-     SubscriptBox["\[Tau]", "2"]]}]]}]], "Output",
- CellChangeTimes->{3.6362932428614173`*^9, 3.6362941690253906`*^9, 
-  3.636294238699376*^9, 3.6362948811081195`*^9}]
-}, Open  ]],
-
-Cell[CellGroupData[{
-
-Cell[BoxData[
- RowBox[{"InverseLaplaceTransform", "[", 
-  RowBox[{
+  RowBox[{"Js", " ", "=", " ", 
    RowBox[{
     RowBox[{"1", " ", "/", " ", 
-     RowBox[{"s", "^", "2"}]}], " ", "/", " ", "Ys"}], ",", " ", "s", ",", 
-   " ", "t"}], "]"}]], "Input",
- CellChangeTimes->{{3.6362932460576*^9, 3.636293278194438*^9}}],
+     RowBox[{"s", "^", "2"}]}], " ", "/", " ", "Ys"}]}], 
+  ";"}], "\[IndentingNewLine]", 
+ RowBox[{"Jt2", " ", "=", " ", 
+  RowBox[{"InverseLaplaceTransform", "[", 
+   RowBox[{
+    RowBox[{"Js", "/.", 
+     RowBox[{"n", "\[Rule]", "2"}]}], ",", " ", "s", ",", " ", "t"}], 
+   "]"}]}]}], "Input",
+ CellChangeTimes->{{3.6363048543245544`*^9, 3.636304896866988*^9}, {
+   3.6363049988838234`*^9, 3.6363050236402392`*^9}, 3.6363050698838844`*^9, {
+   3.6363057269714675`*^9, 3.636305749207739*^9}}],
 
 Cell[BoxData[
  RowBox[{
   FractionBox["1", 
-   SubscriptBox["G", "\[Infinity]"]], "-", 
+   RowBox[{"1", "-", 
+    SubscriptBox["G", "1"], "-", 
+    SubscriptBox["G", "2"]}]], "+", 
   RowBox[{
    RowBox[{"(", 
     RowBox[{
@@ -110,85 +112,46 @@ Cell[BoxData[
          RowBox[{"(", 
           RowBox[{
            RowBox[{"-", 
-            FractionBox[
-             SubscriptBox["G", "2"], 
+            FractionBox["1", 
              RowBox[{"2", " ", 
-              RowBox[{"(", 
-               RowBox[{
-                SubscriptBox["G", "1"], "+", 
-                SubscriptBox["G", "2"], "+", 
-                SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-              SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-           FractionBox[
-            SubscriptBox["G", "\[Infinity]"], 
-            RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]], "-", 
+              SubscriptBox["\[Tau]", "1"]}]]}], "+", 
            FractionBox[
             SubscriptBox["G", "1"], 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "2"]}]], "-", 
-           FractionBox[
-            SubscriptBox["G", "\[Infinity]"], 
+             SubscriptBox["\[Tau]", "1"]}]], "-", 
+           FractionBox["1", 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+             SubscriptBox["\[Tau]", "2"]}]], "+", 
+           FractionBox[
+            SubscriptBox["G", "2"], 
+            RowBox[{"2", " ", 
              SubscriptBox["\[Tau]", "2"]}]], "-", 
            FractionBox[
             SqrtBox[
              RowBox[{
+              RowBox[{
+               RowBox[{"-", "4"}], " ", 
+               RowBox[{"(", 
+                RowBox[{"1", "-", 
+                 SubscriptBox["G", "1"], "-", 
+                 SubscriptBox["G", "2"]}], ")"}], " ", 
+               SubscriptBox["\[Tau]", "1"], " ", 
+               SubscriptBox["\[Tau]", "2"]}], "+", 
               SuperscriptBox[
                RowBox[{"(", 
                 RowBox[{
-                 RowBox[{
-                  SubscriptBox["G", "1"], " ", 
-                  SubscriptBox["\[Tau]", "1"]}], "+", 
-                 RowBox[{
-                  SubscriptBox["G", "\[Infinity]"], " ", 
-                  SubscriptBox["\[Tau]", "1"]}], "+", 
+                 SubscriptBox["\[Tau]", "1"], "-", 
                  RowBox[{
                   SubscriptBox["G", "2"], " ", 
-                  SubscriptBox["\[Tau]", "2"]}], "+", 
-                 RowBox[{
-                  SubscriptBox["G", "\[Infinity]"], " ", 
-                  SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-              RowBox[{"4", " ", 
-               SubscriptBox["G", "\[Infinity]"], " ", 
-               RowBox[{"(", 
-                RowBox[{
+                  SubscriptBox["\[Tau]", "1"]}], "+", 
+                 SubscriptBox["\[Tau]", "2"], "-", 
                  RowBox[{
                   SubscriptBox["G", "1"], " ", 
-                  SubscriptBox["\[Tau]", "1"], " ", 
-                  SubscriptBox["\[Tau]", "2"]}], "+", 
-                 RowBox[{
-                  SubscriptBox["G", "2"], " ", 
-                  SubscriptBox["\[Tau]", "1"], " ", 
-                  SubscriptBox["\[Tau]", "2"]}], "+", 
-                 RowBox[{
-                  SubscriptBox["G", "\[Infinity]"], " ", 
-                  SubscriptBox["\[Tau]", "1"], " ", 
-                  SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+                  SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
              SubscriptBox["\[Tau]", "1"], " ", 
              SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]]}], " ", 
-      SubsuperscriptBox["G", "1", "2"], " ", 
+      SubscriptBox["G", "1"], " ", 
       SubscriptBox["\[Tau]", "1"]}], "+", 
      RowBox[{
       SuperscriptBox["\[ExponentialE]", 
@@ -196,85 +159,93 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{
           RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
+           FractionBox["1", 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
           FractionBox[
            SubscriptBox["G", "1"], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
             SubscriptBox["\[Tau]", "2"]}]], "+", 
           FractionBox[
            SqrtBox[
             RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
              SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
                  SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "1"], " ", 
             SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
-      SubsuperscriptBox["G", "1", "2"], " ", 
+      SubscriptBox["G", "1"], " ", 
+      SubscriptBox["\[Tau]", "1"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "-", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "2"], " ", 
       SubscriptBox["\[Tau]", "1"]}], "-", 
      RowBox[{
       SuperscriptBox["\[ExponentialE]", 
@@ -282,82 +253,90 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{
           RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
+           FractionBox["1", 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
           FractionBox[
            SubscriptBox["G", "1"], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
              RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "2"], " ", 
+      SubscriptBox["\[Tau]", "1"]}], "-", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
             SubscriptBox["\[Tau]", "2"]}]], "-", 
           FractionBox[
            SqrtBox[
             RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
              SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
                  SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "1"], " ", 
             SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
       SubscriptBox["G", "1"], " ", 
@@ -369,82 +348,43 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{
           RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
+           FractionBox["1", 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
           FractionBox[
            SubscriptBox["G", "1"], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
             SubscriptBox["\[Tau]", "2"]}]], "+", 
           FractionBox[
            SqrtBox[
             RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
              SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
                  SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "1"], " ", 
             SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
       SubscriptBox["G", "1"], " ", 
@@ -456,780 +396,140 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{
           RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
+           FractionBox["1", 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
           FractionBox[
            SubscriptBox["G", "1"], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SqrtBox[
-            RowBox[{
-             SuperscriptBox[
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
-      SubscriptBox["G", "1"], " ", 
-      SubscriptBox["G", "\[Infinity]"], " ", 
-      SubscriptBox["\[Tau]", "1"]}], "+", 
-     RowBox[{
-      SuperscriptBox["\[ExponentialE]", 
-       RowBox[{"t", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
-            RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "1"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "1"], 
+          FractionBox["1", 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "2"]}]], "+", 
           FractionBox[
-           SqrtBox[
-            RowBox[{
-             SuperscriptBox[
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+           SubscriptBox["G", "2"], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
-      SubscriptBox["G", "1"], " ", 
-      SubscriptBox["G", "\[Infinity]"], " ", 
-      SubscriptBox["\[Tau]", "1"]}], "+", 
-     RowBox[{
-      SuperscriptBox["\[ExponentialE]", 
-       RowBox[{"t", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
-            RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "1"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "2"]}]], "-", 
           FractionBox[
            SqrtBox[
             RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
              SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
-      SubscriptBox["G", "2"], " ", 
-      SubscriptBox["G", "\[Infinity]"], " ", 
-      SubscriptBox["\[Tau]", "1"]}], "-", 
-     RowBox[{
-      SuperscriptBox["\[ExponentialE]", 
-       RowBox[{"t", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
-            RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "1"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "+", 
-          FractionBox[
-           SqrtBox[
-            RowBox[{
-             SuperscriptBox[
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
                  SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
                  SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
-      SubscriptBox["G", "2"], " ", 
-      SubscriptBox["G", "\[Infinity]"], " ", 
-      SubscriptBox["\[Tau]", "1"]}], "-", 
-     RowBox[{
-      SuperscriptBox["\[ExponentialE]", 
-       RowBox[{"t", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
-            RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "1"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SqrtBox[
-            RowBox[{
-             SuperscriptBox[
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
-      SubscriptBox["G", "1"], " ", 
-      SubscriptBox["G", "2"], " ", 
-      SubscriptBox["\[Tau]", "2"]}], "+", 
-     RowBox[{
-      SuperscriptBox["\[ExponentialE]", 
-       RowBox[{"t", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
-            RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "1"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "+", 
-          FractionBox[
-           SqrtBox[
-            RowBox[{
-             SuperscriptBox[
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
-      SubscriptBox["G", "1"], " ", 
-      SubscriptBox["G", "2"], " ", 
-      SubscriptBox["\[Tau]", "2"]}], "-", 
-     RowBox[{
-      SuperscriptBox["\[ExponentialE]", 
-       RowBox[{"t", " ", 
-        RowBox[{"(", 
-         RowBox[{
-          RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
-            RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "1"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SqrtBox[
-            RowBox[{
-             SuperscriptBox[
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "1"], " ", 
             SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
       SubsuperscriptBox["G", "2", "2"], " ", 
-      SubscriptBox["\[Tau]", "2"]}], "+", 
+      SubscriptBox["\[Tau]", "1"]}], "+", 
      RowBox[{
       SuperscriptBox["\[ExponentialE]", 
        RowBox[{"t", " ", 
         RowBox[{"(", 
          RowBox[{
           RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
+           FractionBox["1", 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
           FractionBox[
            SubscriptBox["G", "1"], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
             SubscriptBox["\[Tau]", "2"]}]], "+", 
           FractionBox[
            SqrtBox[
             RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
              SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
                  SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "1"], " ", 
             SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
       SubsuperscriptBox["G", "2", "2"], " ", 
-      SubscriptBox["\[Tau]", "2"]}], "+", 
+      SubscriptBox["\[Tau]", "1"]}], "+", 
      RowBox[{
       SuperscriptBox["\[ExponentialE]", 
        RowBox[{"t", " ", 
         RowBox[{"(", 
          RowBox[{
           RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
+           FractionBox["1", 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
           FractionBox[
            SubscriptBox["G", "1"], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
             SubscriptBox["\[Tau]", "2"]}]], "-", 
           FractionBox[
            SqrtBox[
             RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
              SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
                  SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "1"], " ", 
             SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
       SubscriptBox["G", "1"], " ", 
-      SubscriptBox["G", "\[Infinity]"], " ", 
       SubscriptBox["\[Tau]", "2"]}], "-", 
      RowBox[{
       SuperscriptBox["\[ExponentialE]", 
@@ -1237,86 +537,46 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{
           RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
+           FractionBox["1", 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
           FractionBox[
            SubscriptBox["G", "1"], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
             SubscriptBox["\[Tau]", "2"]}]], "+", 
           FractionBox[
            SqrtBox[
             RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
              SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
                  SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "1"], " ", 
             SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
       SubscriptBox["G", "1"], " ", 
-      SubscriptBox["G", "\[Infinity]"], " ", 
       SubscriptBox["\[Tau]", "2"]}], "-", 
      RowBox[{
       SuperscriptBox["\[ExponentialE]", 
@@ -1324,86 +584,46 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{
           RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
+           FractionBox["1", 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
           FractionBox[
            SubscriptBox["G", "1"], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
             SubscriptBox["\[Tau]", "2"]}]], "-", 
           FractionBox[
            SqrtBox[
             RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
              SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
                  SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "1"], " ", 
             SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
-      SubscriptBox["G", "2"], " ", 
-      SubscriptBox["G", "\[Infinity]"], " ", 
+      SubsuperscriptBox["G", "1", "2"], " ", 
       SubscriptBox["\[Tau]", "2"]}], "+", 
      RowBox[{
       SuperscriptBox["\[ExponentialE]", 
@@ -1411,86 +631,93 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{
           RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
+           FractionBox["1", 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
           FractionBox[
            SubscriptBox["G", "1"], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
             SubscriptBox["\[Tau]", "2"]}]], "+", 
           FractionBox[
            SqrtBox[
             RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
              SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubsuperscriptBox["G", "1", "2"], " ", 
+      SubscriptBox["\[Tau]", "2"]}], "-", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "-", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "1"], " ", 
             SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
       SubscriptBox["G", "2"], " ", 
-      SubscriptBox["G", "\[Infinity]"], " ", 
       SubscriptBox["\[Tau]", "2"]}], "+", 
      RowBox[{
       SuperscriptBox["\[ExponentialE]", 
@@ -1498,515 +725,1447 @@ Cell[BoxData[
         RowBox[{"(", 
          RowBox[{
           RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
+           FractionBox["1", 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
           FractionBox[
            SubscriptBox["G", "1"], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
              RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "2"], " ", 
+      SubscriptBox["\[Tau]", "2"]}], "-", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
             SubscriptBox["\[Tau]", "2"]}]], "-", 
           FractionBox[
            SqrtBox[
             RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
              SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "1"], " ", 
+      SubscriptBox["G", "2"], " ", 
+      SubscriptBox["\[Tau]", "2"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "1"], " ", 
+      SubscriptBox["G", "2"], " ", 
+      SubscriptBox["\[Tau]", "2"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "-", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
              RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
             SubscriptBox["\[Tau]", "1"], " ", 
             SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
       SubscriptBox["G", "1"], " ", 
       SqrtBox[
        RowBox[{
+        RowBox[{
+         RowBox[{"-", "4"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           SubscriptBox["G", "1"], "-", 
+           SubscriptBox["G", "2"]}], ")"}], " ", 
+         SubscriptBox["\[Tau]", "1"], " ", 
+         SubscriptBox["\[Tau]", "2"]}], "+", 
         SuperscriptBox[
          RowBox[{"(", 
           RowBox[{
-           RowBox[{
-            SubscriptBox["G", "1"], " ", 
-            SubscriptBox["\[Tau]", "1"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "\[Infinity]"], " ", 
-            SubscriptBox["\[Tau]", "1"]}], "+", 
+           SubscriptBox["\[Tau]", "1"], "-", 
            RowBox[{
             SubscriptBox["G", "2"], " ", 
-            SubscriptBox["\[Tau]", "2"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "\[Infinity]"], " ", 
-            SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-        RowBox[{"4", " ", 
-         SubscriptBox["G", "\[Infinity]"], " ", 
-         RowBox[{"(", 
-          RowBox[{
+            SubscriptBox["\[Tau]", "1"]}], "+", 
+           SubscriptBox["\[Tau]", "2"], "-", 
            RowBox[{
             SubscriptBox["G", "1"], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "2"], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "\[Infinity]"], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]]}], "+", 
+            SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]]}], "+", 
      RowBox[{
       SuperscriptBox["\[ExponentialE]", 
        RowBox[{"t", " ", 
         RowBox[{"(", 
          RowBox[{
           RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
+           FractionBox["1", 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
           FractionBox[
            SubscriptBox["G", "1"], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
             SubscriptBox["\[Tau]", "2"]}]], "+", 
           FractionBox[
            SqrtBox[
             RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
              SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
                  SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "1"], " ", 
             SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
       SubscriptBox["G", "1"], " ", 
       SqrtBox[
        RowBox[{
+        RowBox[{
+         RowBox[{"-", "4"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           SubscriptBox["G", "1"], "-", 
+           SubscriptBox["G", "2"]}], ")"}], " ", 
+         SubscriptBox["\[Tau]", "1"], " ", 
+         SubscriptBox["\[Tau]", "2"]}], "+", 
         SuperscriptBox[
          RowBox[{"(", 
           RowBox[{
-           RowBox[{
-            SubscriptBox["G", "1"], " ", 
-            SubscriptBox["\[Tau]", "1"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "\[Infinity]"], " ", 
-            SubscriptBox["\[Tau]", "1"]}], "+", 
+           SubscriptBox["\[Tau]", "1"], "-", 
            RowBox[{
             SubscriptBox["G", "2"], " ", 
-            SubscriptBox["\[Tau]", "2"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "\[Infinity]"], " ", 
-            SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-        RowBox[{"4", " ", 
-         SubscriptBox["G", "\[Infinity]"], " ", 
-         RowBox[{"(", 
-          RowBox[{
+            SubscriptBox["\[Tau]", "1"]}], "+", 
+           SubscriptBox["\[Tau]", "2"], "-", 
            RowBox[{
             SubscriptBox["G", "1"], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "2"], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "\[Infinity]"], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]]}], "+", 
+            SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]]}], "+", 
      RowBox[{
       SuperscriptBox["\[ExponentialE]", 
        RowBox[{"t", " ", 
         RowBox[{"(", 
          RowBox[{
           RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
+           FractionBox["1", 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
           FractionBox[
            SubscriptBox["G", "1"], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
             SubscriptBox["\[Tau]", "2"]}]], "-", 
           FractionBox[
            SqrtBox[
             RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
              SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
                  SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "1"], " ", 
             SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
       SubscriptBox["G", "2"], " ", 
       SqrtBox[
        RowBox[{
+        RowBox[{
+         RowBox[{"-", "4"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           SubscriptBox["G", "1"], "-", 
+           SubscriptBox["G", "2"]}], ")"}], " ", 
+         SubscriptBox["\[Tau]", "1"], " ", 
+         SubscriptBox["\[Tau]", "2"]}], "+", 
         SuperscriptBox[
          RowBox[{"(", 
           RowBox[{
-           RowBox[{
-            SubscriptBox["G", "1"], " ", 
-            SubscriptBox["\[Tau]", "1"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "\[Infinity]"], " ", 
-            SubscriptBox["\[Tau]", "1"]}], "+", 
+           SubscriptBox["\[Tau]", "1"], "-", 
            RowBox[{
             SubscriptBox["G", "2"], " ", 
-            SubscriptBox["\[Tau]", "2"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "\[Infinity]"], " ", 
-            SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-        RowBox[{"4", " ", 
-         SubscriptBox["G", "\[Infinity]"], " ", 
-         RowBox[{"(", 
-          RowBox[{
+            SubscriptBox["\[Tau]", "1"]}], "+", 
+           SubscriptBox["\[Tau]", "2"], "-", 
            RowBox[{
             SubscriptBox["G", "1"], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "2"], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "\[Infinity]"], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]]}], "+", 
+            SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]]}], "+", 
      RowBox[{
       SuperscriptBox["\[ExponentialE]", 
        RowBox[{"t", " ", 
         RowBox[{"(", 
          RowBox[{
           RowBox[{"-", 
-           FractionBox[
-            SubscriptBox["G", "2"], 
+           FractionBox["1", 
             RowBox[{"2", " ", 
-             RowBox[{"(", 
-              RowBox[{
-               SubscriptBox["G", "1"], "+", 
-               SubscriptBox["G", "2"], "+", 
-               SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-             SubscriptBox["\[Tau]", "1"]}]]}], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
-           RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "1"]}]], "-", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
           FractionBox[
            SubscriptBox["G", "1"], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
-            SubscriptBox["\[Tau]", "2"]}]], "-", 
-          FractionBox[
-           SubscriptBox["G", "\[Infinity]"], 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
             SubscriptBox["\[Tau]", "2"]}]], "+", 
           FractionBox[
            SqrtBox[
             RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              RowBox[{"(", 
+               RowBox[{"1", "-", 
+                SubscriptBox["G", "1"], "-", 
+                SubscriptBox["G", "2"]}], ")"}], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
              SuperscriptBox[
               RowBox[{"(", 
                RowBox[{
-                RowBox[{
-                 SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "1"], "-", 
                 RowBox[{
                  SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-             RowBox[{"4", " ", 
-              SubscriptBox["G", "\[Infinity]"], " ", 
-              RowBox[{"(", 
-               RowBox[{
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
                 RowBox[{
                  SubscriptBox["G", "1"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "2"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}], "+", 
-                RowBox[{
-                 SubscriptBox["G", "\[Infinity]"], " ", 
-                 SubscriptBox["\[Tau]", "1"], " ", 
-                 SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]], 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
            RowBox[{"2", " ", 
-            RowBox[{"(", 
-             RowBox[{
-              SubscriptBox["G", "1"], "+", 
-              SubscriptBox["G", "2"], "+", 
-              SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
             SubscriptBox["\[Tau]", "1"], " ", 
             SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
       SubscriptBox["G", "2"], " ", 
       SqrtBox[
        RowBox[{
+        RowBox[{
+         RowBox[{"-", "4"}], " ", 
+         RowBox[{"(", 
+          RowBox[{"1", "-", 
+           SubscriptBox["G", "1"], "-", 
+           SubscriptBox["G", "2"]}], ")"}], " ", 
+         SubscriptBox["\[Tau]", "1"], " ", 
+         SubscriptBox["\[Tau]", "2"]}], "+", 
         SuperscriptBox[
          RowBox[{"(", 
           RowBox[{
-           RowBox[{
-            SubscriptBox["G", "1"], " ", 
-            SubscriptBox["\[Tau]", "1"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "\[Infinity]"], " ", 
-            SubscriptBox["\[Tau]", "1"]}], "+", 
+           SubscriptBox["\[Tau]", "1"], "-", 
            RowBox[{
             SubscriptBox["G", "2"], " ", 
-            SubscriptBox["\[Tau]", "2"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "\[Infinity]"], " ", 
-            SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-        RowBox[{"4", " ", 
-         SubscriptBox["G", "\[Infinity]"], " ", 
-         RowBox[{"(", 
-          RowBox[{
+            SubscriptBox["\[Tau]", "1"]}], "+", 
+           SubscriptBox["\[Tau]", "2"], "-", 
            RowBox[{
             SubscriptBox["G", "1"], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "2"], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}], "+", 
-           RowBox[{
-            SubscriptBox["G", "\[Infinity]"], " ", 
-            SubscriptBox["\[Tau]", "1"], " ", 
-            SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]]}]}], ")"}], "/", 
+            SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]]}]}], ")"}], "/", 
    RowBox[{"(", 
     RowBox[{"2", " ", 
-     SubscriptBox["G", "\[Infinity]"], " ", 
      RowBox[{"(", 
       RowBox[{
+       RowBox[{"-", "1"}], "+", 
        SubscriptBox["G", "1"], "+", 
-       SubscriptBox["G", "2"], "+", 
-       SubscriptBox["G", "\[Infinity]"]}], ")"}], " ", 
+       SubscriptBox["G", "2"]}], ")"}], " ", 
      SqrtBox[
       RowBox[{
+       RowBox[{
+        RowBox[{"-", "4"}], " ", 
+        RowBox[{"(", 
+         RowBox[{"1", "-", 
+          SubscriptBox["G", "1"], "-", 
+          SubscriptBox["G", "2"]}], ")"}], " ", 
+        SubscriptBox["\[Tau]", "1"], " ", 
+        SubscriptBox["\[Tau]", "2"]}], "+", 
        SuperscriptBox[
         RowBox[{"(", 
          RowBox[{
-          RowBox[{
-           SubscriptBox["G", "1"], " ", 
-           SubscriptBox["\[Tau]", "1"]}], "+", 
-          RowBox[{
-           SubscriptBox["G", "\[Infinity]"], " ", 
-           SubscriptBox["\[Tau]", "1"]}], "+", 
+          SubscriptBox["\[Tau]", "1"], "-", 
           RowBox[{
            SubscriptBox["G", "2"], " ", 
-           SubscriptBox["\[Tau]", "2"]}], "+", 
+           SubscriptBox["\[Tau]", "1"]}], "+", 
+          SubscriptBox["\[Tau]", "2"], "-", 
           RowBox[{
-           SubscriptBox["G", "\[Infinity]"], " ", 
-           SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"], "-", 
-       RowBox[{"4", " ", 
-        SubscriptBox["G", "\[Infinity]"], " ", 
+           SubscriptBox["G", "1"], " ", 
+           SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]]}], 
+    ")"}]}]}]], "Output",
+ CellChangeTimes->{{3.6363048494652767`*^9, 3.6363048872074356`*^9}, {
+   3.6363049952946177`*^9, 3.636305025820364*^9}, 3.63630507313807*^9, {
+   3.6363057285035553`*^9, 3.6363057517118826`*^9}}]
+}, Open  ]],
+
+Cell[CellGroupData[{
+
+Cell[BoxData[
+ RowBox[{"Jt2", " ", "/.", " ", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{"1", "-", 
+     SubscriptBox["G", "1"], "-", 
+     SubscriptBox["G", "2"]}], ")"}], " ", "\[Rule]", " ", 
+   SubscriptBox["G", "inf"]}]}]], "Input",
+ CellChangeTimes->{{3.63630507575322*^9, 3.636305115243479*^9}, {
+  3.636305145816227*^9, 3.6363051910688157`*^9}, {3.6363052692792892`*^9, 
+  3.636305269560305*^9}}],
+
+Cell[BoxData[
+ RowBox[{
+  FractionBox["1", 
+   SubscriptBox["G", "inf"]], "+", 
+  RowBox[{
+   RowBox[{"(", 
+    RowBox[{
+     RowBox[{
+      RowBox[{"-", 
+       SuperscriptBox["\[ExponentialE]", 
+        RowBox[{"t", " ", 
+         RowBox[{"(", 
+          RowBox[{
+           RowBox[{"-", 
+            FractionBox["1", 
+             RowBox[{"2", " ", 
+              SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+           FractionBox[
+            SubscriptBox["G", "1"], 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]], "-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "2"]}]], "+", 
+           FractionBox[
+            SubscriptBox["G", "2"], 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "2"]}]], "-", 
+           FractionBox[
+            SqrtBox[
+             RowBox[{
+              RowBox[{
+               RowBox[{"-", "4"}], " ", 
+               SubscriptBox["G", "inf"], " ", 
+               SubscriptBox["\[Tau]", "1"], " ", 
+               SubscriptBox["\[Tau]", "2"]}], "+", 
+              SuperscriptBox[
+               RowBox[{"(", 
+                RowBox[{
+                 SubscriptBox["\[Tau]", "1"], "-", 
+                 RowBox[{
+                  SubscriptBox["G", "2"], " ", 
+                  SubscriptBox["\[Tau]", "1"]}], "+", 
+                 SubscriptBox["\[Tau]", "2"], "-", 
+                 RowBox[{
+                  SubscriptBox["G", "1"], " ", 
+                  SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"], " ", 
+             SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]]}], " ", 
+      SubscriptBox["G", "1"], " ", 
+      SubscriptBox["\[Tau]", "1"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
         RowBox[{"(", 
          RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "1"], " ", 
+      SubscriptBox["\[Tau]", "1"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "-", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "2"], " ", 
+      SubscriptBox["\[Tau]", "1"]}], "-", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "2"], " ", 
+      SubscriptBox["\[Tau]", "1"]}], "-", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "-", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "1"], " ", 
+      SubscriptBox["G", "2"], " ", 
+      SubscriptBox["\[Tau]", "1"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "1"], " ", 
+      SubscriptBox["G", "2"], " ", 
+      SubscriptBox["\[Tau]", "1"]}], "-", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "-", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubsuperscriptBox["G", "2", "2"], " ", 
+      SubscriptBox["\[Tau]", "1"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubsuperscriptBox["G", "2", "2"], " ", 
+      SubscriptBox["\[Tau]", "1"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "-", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "1"], " ", 
+      SubscriptBox["\[Tau]", "2"]}], "-", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "1"], " ", 
+      SubscriptBox["\[Tau]", "2"]}], "-", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "-", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubsuperscriptBox["G", "1", "2"], " ", 
+      SubscriptBox["\[Tau]", "2"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubsuperscriptBox["G", "1", "2"], " ", 
+      SubscriptBox["\[Tau]", "2"]}], "-", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "-", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "2"], " ", 
+      SubscriptBox["\[Tau]", "2"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "2"], " ", 
+      SubscriptBox["\[Tau]", "2"]}], "-", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "-", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "1"], " ", 
+      SubscriptBox["G", "2"], " ", 
+      SubscriptBox["\[Tau]", "2"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "1"], " ", 
+      SubscriptBox["G", "2"], " ", 
+      SubscriptBox["\[Tau]", "2"]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "-", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "1"], " ", 
+      SqrtBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "4"}], " ", 
+         SubscriptBox["G", "inf"], " ", 
+         SubscriptBox["\[Tau]", "1"], " ", 
+         SubscriptBox["\[Tau]", "2"]}], "+", 
+        SuperscriptBox[
+         RowBox[{"(", 
           RowBox[{
-           SubscriptBox["G", "1"], " ", 
-           SubscriptBox["\[Tau]", "1"], " ", 
-           SubscriptBox["\[Tau]", "2"]}], "+", 
+           SubscriptBox["\[Tau]", "1"], "-", 
+           RowBox[{
+            SubscriptBox["G", "2"], " ", 
+            SubscriptBox["\[Tau]", "1"]}], "+", 
+           SubscriptBox["\[Tau]", "2"], "-", 
+           RowBox[{
+            SubscriptBox["G", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "1"], " ", 
+      SqrtBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "4"}], " ", 
+         SubscriptBox["G", "inf"], " ", 
+         SubscriptBox["\[Tau]", "1"], " ", 
+         SubscriptBox["\[Tau]", "2"]}], "+", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           SubscriptBox["\[Tau]", "1"], "-", 
+           RowBox[{
+            SubscriptBox["G", "2"], " ", 
+            SubscriptBox["\[Tau]", "1"]}], "+", 
+           SubscriptBox["\[Tau]", "2"], "-", 
+           RowBox[{
+            SubscriptBox["G", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "-", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "2"], " ", 
+      SqrtBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "4"}], " ", 
+         SubscriptBox["G", "inf"], " ", 
+         SubscriptBox["\[Tau]", "1"], " ", 
+         SubscriptBox["\[Tau]", "2"]}], "+", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           SubscriptBox["\[Tau]", "1"], "-", 
+           RowBox[{
+            SubscriptBox["G", "2"], " ", 
+            SubscriptBox["\[Tau]", "1"]}], "+", 
+           SubscriptBox["\[Tau]", "2"], "-", 
+           RowBox[{
+            SubscriptBox["G", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]]}], "+", 
+     RowBox[{
+      SuperscriptBox["\[ExponentialE]", 
+       RowBox[{"t", " ", 
+        RowBox[{"(", 
+         RowBox[{
+          RowBox[{"-", 
+           FractionBox["1", 
+            RowBox[{"2", " ", 
+             SubscriptBox["\[Tau]", "1"]}]]}], "+", 
+          FractionBox[
+           SubscriptBox["G", "1"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"]}]], "-", 
+          FractionBox["1", 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SubscriptBox["G", "2"], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "2"]}]], "+", 
+          FractionBox[
+           SqrtBox[
+            RowBox[{
+             RowBox[{
+              RowBox[{"-", "4"}], " ", 
+              SubscriptBox["G", "inf"], " ", 
+              SubscriptBox["\[Tau]", "1"], " ", 
+              SubscriptBox["\[Tau]", "2"]}], "+", 
+             SuperscriptBox[
+              RowBox[{"(", 
+               RowBox[{
+                SubscriptBox["\[Tau]", "1"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "2"], " ", 
+                 SubscriptBox["\[Tau]", "1"]}], "+", 
+                SubscriptBox["\[Tau]", "2"], "-", 
+                RowBox[{
+                 SubscriptBox["G", "1"], " ", 
+                 SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]], 
+           RowBox[{"2", " ", 
+            SubscriptBox["\[Tau]", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]]}], ")"}]}]], " ", 
+      SubscriptBox["G", "2"], " ", 
+      SqrtBox[
+       RowBox[{
+        RowBox[{
+         RowBox[{"-", "4"}], " ", 
+         SubscriptBox["G", "inf"], " ", 
+         SubscriptBox["\[Tau]", "1"], " ", 
+         SubscriptBox["\[Tau]", "2"]}], "+", 
+        SuperscriptBox[
+         RowBox[{"(", 
+          RowBox[{
+           SubscriptBox["\[Tau]", "1"], "-", 
+           RowBox[{
+            SubscriptBox["G", "2"], " ", 
+            SubscriptBox["\[Tau]", "1"]}], "+", 
+           SubscriptBox["\[Tau]", "2"], "-", 
+           RowBox[{
+            SubscriptBox["G", "1"], " ", 
+            SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]]}]}], ")"}], "/", 
+   RowBox[{"(", 
+    RowBox[{"2", " ", 
+     RowBox[{"(", 
+      RowBox[{
+       RowBox[{"-", "1"}], "+", 
+       SubscriptBox["G", "1"], "+", 
+       SubscriptBox["G", "2"]}], ")"}], " ", 
+     SqrtBox[
+      RowBox[{
+       RowBox[{
+        RowBox[{"-", "4"}], " ", 
+        SubscriptBox["G", "inf"], " ", 
+        SubscriptBox["\[Tau]", "1"], " ", 
+        SubscriptBox["\[Tau]", "2"]}], "+", 
+       SuperscriptBox[
+        RowBox[{"(", 
+         RowBox[{
+          SubscriptBox["\[Tau]", "1"], "-", 
           RowBox[{
            SubscriptBox["G", "2"], " ", 
-           SubscriptBox["\[Tau]", "1"], " ", 
-           SubscriptBox["\[Tau]", "2"]}], "+", 
+           SubscriptBox["\[Tau]", "1"]}], "+", 
+          SubscriptBox["\[Tau]", "2"], "-", 
           RowBox[{
-           SubscriptBox["G", "\[Infinity]"], " ", 
-           SubscriptBox["\[Tau]", "1"], " ", 
-           SubscriptBox["\[Tau]", "2"]}]}], ")"}]}]}]]}], ")"}]}]}]], "Output",
- CellChangeTimes->{{3.6362932564011917`*^9, 3.636293279217497*^9}, 
-   3.6362941707854915`*^9, 3.6362942453387556`*^9, 3.6362948858613915`*^9}]
+           SubscriptBox["G", "1"], " ", 
+           SubscriptBox["\[Tau]", "2"]}]}], ")"}], "2"]}]]}], 
+    ")"}]}]}]], "Output",
+ CellChangeTimes->{3.63630511701558*^9, 3.6363051918698616`*^9, 
+  3.6363052705833635`*^9}]
 }, Open  ]]
 },
 WindowSize->{1280, 942},
@@ -2026,16 +2185,16 @@ CellTagsIndex->{}
 (*NotebookFileOutline
 Notebook[{
 Cell[CellGroupData[{
-Cell[580, 22, 672, 18, 31, "Input"],
-Cell[1255, 42, 522, 16, 41, "Output"]
+Cell[580, 22, 1424, 36, 72, "Input"],
+Cell[2007, 60, 489, 16, 61, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[1814, 63, 214, 4, 31, "Input"],
-Cell[2031, 69, 473, 15, 58, "Output"]
+Cell[2533, 81, 596, 15, 52, "Input"],
+Cell[3132, 98, 38211, 1065, 1053, "Output"]
 }, Open  ]],
 Cell[CellGroupData[{
-Cell[2541, 89, 283, 7, 31, "Input"],
-Cell[2827, 98, 73368, 1910, 1810, "Output"]
+Cell[41380, 1168, 402, 10, 31, "Input"],
+Cell[41785, 1180, 35199, 987, 850, "Output"]
 }, Open  ]]
 }
 ]
